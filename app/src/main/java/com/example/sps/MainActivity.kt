@@ -25,7 +25,11 @@ class MainActivity : AppCompatActivity() {
                 UrgenceActivity::class.java)
             startActivity(intent)
         }
-
+button3.setOnClickListener {
+    val intent= Intent(this,
+        MapActivity::class.java)
+    startActivity(intent)
+}
 
     }
 }
