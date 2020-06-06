@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.CombinedChart
+import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.utils.ColorTemplate
 
 
 class BulletinActivity : AppCompatActivity() {
@@ -97,6 +99,38 @@ class BulletinActivity : AppCompatActivity() {
         barChart.animateY(3000, Easing.EaseInOutBack)
         barChart.description.isEnabled = false
         barChart.data= data2
+
+
+
+
+
+
+
+        var hbarChart : HorizontalBarChart = findViewById(R.id.hbarchart)
+        hbarChart.setDrawBarShadow(false)
+        hbarChart.setDrawValueAboveBar(true)
+
+        hbarChart.setPinchZoom(false)
+        hbarChart.setDrawGridBackground(false)
+        val  leftAxish : YAxis= hbarChart.getAxisLeft();
+        val rightAxish :YAxis = hbarChart.getAxisRight();
+        val xxAxish:XAxis = hbarChart.getXAxis();
+        rightAxish.setEnabled(true);
+        leftAxish.setEnabled(false);
+        xxAxish.setEnabled(false);
+
+        var hbarEntries = ArrayList<BarEntry>()
+        hbarEntries= getbarentries3(hbarEntries)
+        var hbarDataSet = BarDataSet(hbarEntries,"Total des cas")
+        hbarDataSet.valueTextColor= Color.BLACK
+        hbarDataSet.color=  Color.parseColor("#5AC7AA")
+        var data3 = BarData(hbarDataSet)
+        data3.barWidth=0.5f
+        data3.setValueTextColor(Color.BLACK)
+        data3.setValueTextSize(20f)
+        hbarChart.animateY(3000, Easing.EaseInOutBack)
+        hbarChart.description.isEnabled = false
+        hbarChart.data= data3
     }
 
 
@@ -159,6 +193,12 @@ class BulletinActivity : AppCompatActivity() {
         barEntries.add(BarEntry(6f,20F))
         barEntries.add(BarEntry(7f,20F))
 
+
+        return barEntries
+    }
+    fun getbarentries3(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
+        barEntries.add(BarEntry(1f,50F))
+        barEntries.add(BarEntry(2f,33F))
 
         return barEntries
     }
