@@ -3,6 +3,8 @@ package com.example.sps
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.CombinedChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
@@ -63,6 +65,38 @@ class BulletinActivity : AppCompatActivity() {
         xAxis.labelCount=4
         combinedchart.data= data
         combinedchart.invalidate()
+
+
+
+
+
+
+
+
+        var barChart : BarChart = findViewById(R.id.barchart)
+        barChart.setDrawBarShadow(false)
+        barChart.setDrawValueAboveBar(true)
+        barChart.setMaxVisibleValueCount(300)
+        barChart.setPinchZoom(false)
+        barChart.setDrawGridBackground(false)
+        val  leftAxis : YAxis= barChart.getAxisLeft();
+        val rightAxis :YAxis = barChart.getAxisRight();
+        val xxAxis:XAxis = barChart.getXAxis();
+        rightAxis.setEnabled(false);
+        leftAxis.setEnabled(false);
+        xxAxis.setEnabled(true);
+
+        var barEntries = ArrayList<BarEntry>()
+        barEntries= getbarentries2(barEntries)
+        var barDataSet = BarDataSet(barEntries,"Total des cas")
+        barDataSet.color=  Color.parseColor("#5AC7AA")
+        var data2 = BarData(barDataSet)
+        data2.barWidth=0.5f
+        data2.setValueTextColor(Color.BLACK)
+        data2.setValueTextSize(10f)
+        barChart.animateY(3000, Easing.EaseInOutBack)
+        barChart.description.isEnabled = false
+        barChart.data= data2
     }
 
 
@@ -113,5 +147,19 @@ class BulletinActivity : AppCompatActivity() {
         set.setValueTextSize(10f);
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         return  set
+    }
+
+
+    fun getbarentries2(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
+        barEntries.add(BarEntry(1f,30F))
+        barEntries.add(BarEntry(2f,20F))
+        barEntries.add(BarEntry(3f,15F))
+        barEntries.add(BarEntry(4f,40F))
+        barEntries.add(BarEntry(5f,30F))
+        barEntries.add(BarEntry(6f,20F))
+        barEntries.add(BarEntry(7f,20F))
+
+
+        return barEntries
     }
 }
