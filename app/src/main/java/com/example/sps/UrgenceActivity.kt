@@ -8,13 +8,15 @@ import kotlinx.android.synthetic.main.activity_urgence.*
 
 
 class UrgenceActivity : AppCompatActivity() {
-
+companion object{
+    var urgences= ArrayList<Urgence>()
+}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_urgence)
         val Urgence =Urgence("Urgence 1 ", "Ceci est une Urgence")
         val Urgence2 =Urgence("Urgence 2 ", "Ceci est une Urgence")
-         var urgences= ArrayList<Urgence>()
+
 
     urgences.add(Urgence)
         urgences.add(Urgence2)
