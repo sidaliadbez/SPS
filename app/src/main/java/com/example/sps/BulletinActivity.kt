@@ -7,6 +7,7 @@ import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.CombinedChart
 import com.github.mikephil.charting.charts.HorizontalBarChart
+import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
@@ -131,6 +132,36 @@ class BulletinActivity : AppCompatActivity() {
         hbarChart.animateY(3000, Easing.EaseInOutBack)
         hbarChart.description.isEnabled = false
         hbarChart.data= data3
+
+
+
+
+
+
+        var pieChart : PieChart = findViewById(R.id.piechart)
+        var listPie = ArrayList<PieEntry>()
+        listPie=getpieentries(listPie)
+        var listColors = ArrayList<Int>()
+        listColors.add(Color.parseColor("#026D0A"))
+        listColors.add(Color.parseColor("#5AC7AA"))
+        listColors.add(Color.parseColor("#F24E4E"))
+        listColors.add(Color.parseColor("#EFBB12"))
+
+        var pieDataSet = PieDataSet(listPie, "")
+        pieDataSet.colors = listColors
+        pieDataSet.valueTextColor=Color.BLACK
+
+        var pieData = PieData(pieDataSet)
+        pieData.setValueTextSize(0f)
+
+        pieChart.data = pieData
+        pieChart.setUsePercentValues(false)
+        pieChart.isDrawHoleEnabled = true
+        pieChart.description.isEnabled = false
+        pieChart.setHoleColor((-0xFFF9F9F9).toInt())
+        pieChart.animateY(2000, Easing.EaseInOutBack)
+
+
     }
 
 
@@ -199,6 +230,14 @@ class BulletinActivity : AppCompatActivity() {
     fun getbarentries3(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
         barEntries.add(BarEntry(1f,50F))
         barEntries.add(BarEntry(2f,33F))
+
+        return barEntries
+    }
+    fun getpieentries(barEntries: ArrayList<PieEntry>):ArrayList<PieEntry>{
+        barEntries.add(PieEntry(30f,"Oran"))
+        barEntries.add(PieEntry(10f,"Blida"))
+        barEntries.add(PieEntry(25f,"Alger"))
+        barEntries.add(PieEntry(35f,"Tipaza"))
 
         return barEntries
     }
