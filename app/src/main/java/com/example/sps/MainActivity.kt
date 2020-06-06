@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
                 BulletinActivity::class.java)
             startActivity(intent)
         }
+        button2.setOnClickListener {
+            val intent= Intent(this,
+                UrgenceActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
