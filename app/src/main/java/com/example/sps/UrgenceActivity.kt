@@ -1,6 +1,7 @@
 package com.example.sps
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_urgence.*
@@ -18,7 +19,18 @@ class UrgenceActivity : AppCompatActivity() {
     urgences.add(Urgence)
         urgences.add(Urgence2)
         setupRecyclerView(urgences)
+
+
+        fab.setOnClickListener {
+            openDialog()
+        }
     }
+
+    private fun openDialog() {
+           val dialogueUrgence= DialogueUrgence()
+        dialogueUrgence.show(supportFragmentManager,"example dialogue")
+    }
+
     private fun setupRecyclerView(urgences: ArrayList<Urgence>) {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL

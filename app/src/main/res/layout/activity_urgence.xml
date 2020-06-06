@@ -48,7 +48,7 @@
         <TextView
             android:text="Medecin traitant "
             android:paddingTop="10dp"
-
+            android:id="@+id/nomedecin"
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -85,17 +85,19 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="52dp"
-        android:layout_height="29dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:fabCustomSize="60dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#FF4B63"
         android:clickable="true"
-        app:backgroundTint="#FFFFFF"
-        app:backgroundTintMode="add"
+        android:src="@drawable/ic_plus"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="#DFDFDF"
+        app:rippleColor="#FFFFFF"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
