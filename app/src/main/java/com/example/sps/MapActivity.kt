@@ -11,6 +11,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 
 class MapActivity : AppCompatActivity() , OnMapReadyCallback {
+    companion object{
+        var bejaia = Wilaya("bejaia",7,36.75587 ,5.08433)
+        var annaba = Wilaya("annaba",10,36.9 ,7.76667)
+        var alger = Wilaya("alger",9,36.754110,3.058785)
+        var oran = Wilaya("oran",5,35.69111 ,-0.64167)
+    }
 private  lateinit var map : GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +29,16 @@ private  lateinit var map : GoogleMap
         if (p0 != null) {
             map = p0
         }
-        val Alger: LatLng= LatLng(36.754110, 3.058785)
-        val centrealgerie : LatLng= LatLng(28.388792, 2.674263)
-        map.addMarker(MarkerOptions().position(Alger).title("Alger"))
+
+        val Alger: LatLng= LatLng(alger.lag, alger.lng)
+        map.addMarker(MarkerOptions().position(Alger).title(alger.nom))
+        val Bejaia: LatLng= LatLng(bejaia.lag, bejaia.lng)
+        map.addMarker(MarkerOptions().position(Bejaia).title(bejaia.nom))
+        val Oran: LatLng= LatLng(oran.lag, oran.lng)
+        map.addMarker(MarkerOptions().position(Oran).title(oran.nom))
+        val Annaba: LatLng= LatLng(annaba.lag, annaba.lng)
+        map.addMarker(MarkerOptions().position(Annaba).title(annaba.nom))
+        val centrealgerie : LatLng= LatLng(30.965656,1.663521)
         map.moveCamera(CameraUpdateFactory.newLatLng(centrealgerie))
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(centrealgerie, 5f))
     }
