@@ -2,6 +2,8 @@ package com.example.sps
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -12,6 +14,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_map.*
 import kotlinx.android.synthetic.main.activity_urgence.*
+
 
 
 class MapActivity : AppCompatActivity() , OnMapReadyCallback {
@@ -29,12 +32,50 @@ private  lateinit var map : GoogleMap
         mapFragment.getMapAsync(this)
 
         buttoncas.setOnClickListener {
-                layoutcaswilaya.visibility= View.GONE
+            if(layoutcaswilaya.visibility==View.VISIBLE)
+
+               { layoutcaswilaya.visibility= View.GONE
+                   buttoncas.setImageResource(R.drawable.ic_down)
+               }else {
+                    layoutcaswilaya.visibility= View.VISIBLE
+                buttoncas.setImageResource(R.drawable.ic_up)
+                    }
+
+
         }
+
         var wilayas = java.util.ArrayList<Wilaya>()
         wilayas.add(bejaia)
         wilayas.add(alger)
-        setupRecyclerView(wilayas)
+        wilayas.add(annaba)
+        wilayas.add(oran)
+        val sorted : List<Wilaya> =  wilayas.sortedBy { it.nom }
+        val sortedWilaya = ArrayList<Wilaya>()
+        sorted.forEach { sortedWilaya.add(it)  }
+        filtreville.setOnClickListener {
+            val popupmenu = PopupMenu(this, it)
+            popupmenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.namewilaya -> {
+                            filtreville.text="Par ville"
+                        setupRecyclerView(sortedWilaya)
+                        wilayas.forEach { println(it.nom) }
+                        true
+                    }
+                    R.id.nombrecas -> {
+                        filtreville.text="Par Nombre de cas"
+                        wilayas.sortByDescending  { it.nbcas }
+                        setupRecyclerView(wilayas)
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popupmenu.inflate(R.menu.menu_filter)
+            popupmenu.show()
+        }
+
+        setupRecyclerView(sortedWilaya)
     }
 
     override fun onMapReady(p0: GoogleMap?) {
