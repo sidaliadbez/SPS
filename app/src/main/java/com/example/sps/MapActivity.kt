@@ -11,13 +11,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_map.*
 import kotlinx.android.synthetic.main.activity_urgence.*
 
 
 
-class MapActivity : AppCompatActivity() , OnMapReadyCallback {
+class MapActivity : AppCompatActivity() , OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     companion object{
         var bejaia = Wilaya("bejaia",7,36.75587 ,5.08433)
         var annaba = Wilaya("annaba",10,36.9 ,7.76667)
@@ -32,6 +33,7 @@ private  lateinit var map : GoogleMap
         mapFragment.getMapAsync(this)
 
         buttoncas.setOnClickListener {
+            onMarkerClick(map.addMarker(MarkerOptions().position(LatLng(alger.lag, alger.lng)).title(alger.nom)))
             if(layoutcaswilaya.visibility==View.VISIBLE)
 
                { layoutcaswilaya.visibility= View.GONE
@@ -104,5 +106,9 @@ private  lateinit var map : GoogleMap
             wilayas
         )
         listcaswilaya.adapter = adapter
+    }
+
+    override fun onMarkerClick(p0: Marker?): Boolean {
+        return true
     }
 }
