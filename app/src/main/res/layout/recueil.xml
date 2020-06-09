@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".RecueilActivity">
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:background="@color/colorPP"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:theme="@style/ToolbarColoredBackArrow"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        ><LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:text="Recueil des signalements de cas"
+            android:textColor="@color/colorRec"
+            android:textSize="22sp"
+            android:textStyle="bold"
+
+
+
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+    </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/autoverif"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:background="@drawable/rectangle2"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:layout_width="161dp"
+            android:layout_height="134dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="1dp"
+            android:layout_marginBottom="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/character" />
+
+        <TextView
+            android:layout_width="243dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-40dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/faire_l_auto_v_rification"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-245dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_weight="1"
+            android:text="Contient plusierus questions de liste de contrôle pour vérifier votre condition physique."
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="240dp"
+        android:gravity="center"
+        android:text="Mise à jour de transmission "
+        android:textColor="@color/colorRec"
+        android:textSize="23sp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="270dp"
+        android:gravity="center"
+        android:text="Dernière. màj : 13 Mai 2020 "
+        android:textColor="@color/colorRec"
+        android:textSize="15sp"
+
+
+        />
+    <Button
+        android:id="@+id/update"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="366dp"
+        android:layout_marginBottom="180dp"
+        android:background="@drawable/refreshh"
+        android:layout_marginTop="255dp"
+
+
+        />
+
+    <GridLayout
+
+        android:layout_width="396dp"
+        android:layout_height="140dip"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="290dp"
+        android:layout_marginLeft="-80dp"
+        android:columnCount="3"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/my_edittext_bg"
+        android:rowCount="4"
+
+        >
+
+        <Button
+
+            android:id="@+id/button1"
+            android:layout_width="40dp"
+
+            android:layout_height="40dp"
+            android:layout_row="0"
+            android:layout_column="0"
+
+            android:layout_marginLeft="36dp"
+            android:background="@drawable/ic_active"
+
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginLeft="37dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="[+125]"
+            android:textColor="@color/actif"
+            android:textSize="13sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_marginLeft="32dp"
+            android:text="7,987"
+            android:textColor="@color/actif"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_marginLeft="42dp"
+            android:text="Actif"
+            android:textColor="@color/actif"
+            android:textSize="13sp"
+
+
+            />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="77dp"
+            android:background="@drawable/ic_heart"
+
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="[+102]"
+            android:textColor="@color/heart"
+            android:textSize="13sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_marginLeft="70dp"
+            android:text="4,109"
+            android:textColor="@color/heart"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_marginLeft="72dp"
+            android:text="Guérisons"
+            android:textColor="@color/heart"
+            android:textSize="13sp"
+
+
+            />
+
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="77dp"
+            android:background="@drawable/ic_dead" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="[+10]"
+            android:textColor="@color/dead"
+            android:textSize="13sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="2"
+            android:layout_column="2"
+            android:layout_marginLeft="78dp"
+            android:text="205"
+            android:textColor="@color/dead"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_marginLeft="76dp"
+            android:text="Décés"
+            android:textColor="@color/dead"
+            android:textSize="13sp"
+
+
+            />
+
+
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="444dp"
+        android:gravity="center"
+        android:text="Tendances de propagation"
+        android:textColor="@color/colorRec"
+        android:textSize="21sp"
+
+        android:textStyle="bold"
+
+
+        />
+
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="255dip"
+        android:background="@drawable/my_edittext_bg"
+
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="-8dip"
+            android:text="Cas Actifs"
+            android:textColor="@color/actif"
+            android:textSize="17sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="-6dp"
+            android:layout_marginLeft="174dp"
+            android:text="7,987"
+            android:textColor="@color/actif"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="-6dp"
+
+            android:text="[+125]"
+            android:textStyle="bold"
+            android:textColor="@color/actif"
+            android:textSize="13sp"
+
+
+            />
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="360dip"
+            android:layout_height="160dip"
+            android:layout_marginTop="54dip"
+            android:layout_marginLeft="-343dip"
+            android:background="@drawable/my_edittext_bg"
+            android:layout_marginBottom="40dp"
+
+            />
+
+        <Button
+            android:id="@+id/hebdo"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="132dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="-366dp"
+            android:layout_marginTop="20dip"
+
+
+            android:layout_marginBottom="-50dp"
+            android:textAllCaps="false"
+            android:text="Hebdomadaire"
+            android:textColor="@color/black"
+            android:textSize="7.5dp" />
+
+        >
+        <Button
+            android:id="@+id/mensu"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="132dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="-6dp"
+            android:layout_marginTop="20dip"
+            android:layout_marginBottom="-50dp"
+            android:textAllCaps="false"
+            android:text="Mensuel"
+            android:textColor="@color/black"
+            android:textSize="7.5dp" />
+
+        >
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
