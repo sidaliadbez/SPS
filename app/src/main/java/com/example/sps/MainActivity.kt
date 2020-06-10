@@ -30,6 +30,11 @@ button3.setOnClickListener {
         MapActivity::class.java)
     startActivity(intent)
 }
+        button4.setOnClickListener {
+            val intent= Intent(this,
+                MettreAjourCasActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
