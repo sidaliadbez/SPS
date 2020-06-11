@@ -6,18 +6,26 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_mettreajourcas.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MettreAjourCasActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener {
+class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var formate = SimpleDateFormat("dd MMM, YYYY",Locale.FRENCH)
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.FRANCE)
     lateinit var radioGroup:RadioGroup
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mettreajourcas)
+
+
+
         val currentTime = Calendar.getInstance().time
         val date = formate.format(currentTime.time)
         textdate.text=date
@@ -65,12 +73,37 @@ class MettreAjourCasActivity : AppCompatActivity() , AdapterView.OnItemSelectedL
                     now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
         }
+
+        val bottomNavigationView =
+            findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
+        val menu = bottomNavigationView.menu
+        val menuItem = menu.getItem(0)
+        menuItem.isChecked = true
+        bottomNavigationView.setOnNavigationItemReselectedListener {
+            when (it.itemId) {
+                R.id.page_1 -> {
+                    Toast.makeText(this,"11111111111111111111",Toast.LENGTH_SHORT).show()
+                }
+                R.id.page_4 -> {
+                    Toast.makeText(this,"2222222222222222",Toast.LENGTH_SHORT).show()
+                }
+
+            }
+            true
+        }
     }
+
+
+
+
+
+
+
 
     override fun finish() {
         super.finish()
     }
-    override fun onNothingSelected(parent: AdapterView<*>?) {
+   override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -80,8 +113,9 @@ class MettreAjourCasActivity : AppCompatActivity() , AdapterView.OnItemSelectedL
             Toast.makeText(parent.context,text,Toast.LENGTH_SHORT).show()
         }
     }
+
     fun checkButton(v: View?) {
-        val radioId: Int? = radioGroup.checkedRadioButtonId
+        val radioId: Int = radioGroup.checkedRadioButtonId
         //var radioButton = radioId?.let { findViewById<RadioButton>(it) }
        var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
         Toast.makeText(

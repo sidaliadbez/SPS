@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="4">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NouveauCasFragment">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -80,23 +82,21 @@
                     android:weightSum="2"
                     android:layout_weight="2">
 
-                        <RadioButton
-                            android:id="@+id/radio_one"
-                            android:layout_width="0dp"
-                            android:gravity="center"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="Male"
-                            android:onClick="checkButton"
-                            android:checked="true"/>
-                        <RadioButton
-                            android:id="@+id/radio_two"
-                            android:layout_width="0dp"
-                            android:gravity="center"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="Femele"
-                            android:onClick="checkButton"/>
+                    <RadioButton
+                        android:id="@+id/radio_one"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Male"
+                        android:checked="true" />
+                    <RadioButton
+                        android:id="@+id/radio_two"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Femele" />
 
 
                 </RadioGroup>
@@ -185,7 +185,7 @@
                             android:id="@+id/selecttime"                            android:layout_marginBottom="10dp"
                             android:layout_marginVertical="10dp"
                             android:layout_marginHorizontal="15dp"
-                           android:textSize="11dp"
+                            android:textSize="11dp"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:text="Changer Heure"
@@ -223,7 +223,7 @@
 
                     </LinearLayout>
                 </LinearLayout>
-              </LinearLayout>
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -232,34 +232,28 @@
 
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:weightSum="2"
-    android:layout_weight="0.7">
-<Button
-    android:id="@+id/buttonannuler"
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_margin="25dp"
-    android:text="Annuler"
-    android:background="@drawable/costum_button"
-    android:layout_height="match_parent"/>
-    <Button
-        android:id="@+id/buttonenregistrer"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_margin="25dp"
-        android:text="Enregistrer"
-        android:background="@drawable/costum_button"
-        android:layout_height="match_parent"/>
-</LinearLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:background="@color/cardview_light_background"
-        app:itemRippleColor="@color/cardview_light_background"
-        app:menu="@menu/bottom_navigation_menu"/>
+        android:weightSum="2"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/buttonannuler"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="40dp"
+            android:text="Annuler"
+            android:background="@drawable/costum_button"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/buttonenregistrer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="40dp"
+            android:text="Enregistrer"
+            android:background="@drawable/costum_button"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
 </LinearLayout>
+</FrameLayout>
