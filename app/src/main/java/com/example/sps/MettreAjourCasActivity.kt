@@ -4,9 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_mettreajourcas.*
 import java.text.SimpleDateFormat
@@ -16,6 +14,7 @@ import java.util.*
 class MettreAjourCasActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener {
     var formate = SimpleDateFormat("dd MMM, YYYY",Locale.FRENCH)
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.FRANCE)
+    lateinit var radioGroup:RadioGroup
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mettreajourcas)
@@ -28,6 +27,8 @@ class MettreAjourCasActivity : AppCompatActivity() , AdapterView.OnItemSelectedL
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerwilaya.adapter=adapter
         spinnerwilaya.onItemSelectedListener=this
+
+        radioGroup =findViewById<RadioGroup>(R.id.grouperadio)
         buttonannuler.setOnClickListener {
             finish()
         }
@@ -78,5 +79,14 @@ class MettreAjourCasActivity : AppCompatActivity() , AdapterView.OnItemSelectedL
         if (parent != null) {
             Toast.makeText(parent.context,text,Toast.LENGTH_SHORT).show()
         }
+    }
+    fun checkButton(v: View?) {
+        val radioId: Int? = radioGroup.checkedRadioButtonId
+        //var radioButton = radioId?.let { findViewById<RadioButton>(it) }
+       var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
+        Toast.makeText(
+            this, "Selected Radio Button: " + radioButton?.text,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
