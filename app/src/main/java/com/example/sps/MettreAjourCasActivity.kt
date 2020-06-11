@@ -2,6 +2,7 @@ package com.example.sps
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -82,10 +83,11 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         bottomNavigationView.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.page_1 -> {
-                    Toast.makeText(this,"11111111111111111111",Toast.LENGTH_SHORT).show()
+
                 }
                 R.id.page_4 -> {
-                    Toast.makeText(this,"2222222222222222",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this,GuerisonMortActivity::class.java)
+                    startActivity(intent)
                 }
 
             }
