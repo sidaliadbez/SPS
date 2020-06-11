@@ -5,132 +5,253 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    app:cardCornerRadius="10dp"
-    android:layout_marginHorizontal="30dp"
-    android:layout_marginTop="200dp"
+    android:orientation="vertical"
+    android:weightSum="4">
 
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:weightSum="3">
-        <TextView
+        android:weightSum="5">
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingLeft="15dp"
-            android:text="Nombre de Cas"
-            android:layout_weight="1"/>
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerwilaya"
-            android:paddingLeft="10dp"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.405"
+            android:layout_weight="1"
+            android:layout_marginVertical="20dp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginHorizontal="30dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="3">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:paddingLeft="15dp"
+                    android:text="Nombre de Cas"
+                    android:layout_weight="1"/>
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerwilaya"
+                    android:paddingLeft="10dp"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.405"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="30dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="15dp"
+                    android:text="Sexe" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="2">
+                        <RadioButton
+                            android:id="@+id/radio_one"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Male"
+                            android:onClick="checkButton"
+                            android:checked="true"/>
+                        <RadioButton
+                            android:id="@+id/radio_two"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Femele"
+                            android:onClick="checkButton"/>
+                    </LinearLayout>
+
+                </RadioGroup>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="30dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="15dp"
+                    android:text="Age" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="0"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginBottom="5dp"
+            android:layout_marginHorizontal="30dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="11">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:paddingLeft="15dp"
+                    android:text="Time and Date" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9"
+                    android:weightSum="2">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:weightSum="6"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:src="@drawable/ic_clock"
+                            android:padding="10dp"
+                            android:layout_weight="3"/>
+                        <TextView
+                            android:textAlignment="center"
+                            android:id="@+id/texttime"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+                        <Button
+                            android:background="@color/colorPrimaryDark"
+                            android:id="@+id/selecttime"                            android:layout_marginBottom="10dp"
+                            android:layout_marginVertical="10dp"
+                            android:layout_marginHorizontal="15dp"
+                           android:textSize="11dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:text="Changer Heure"
+                            android:layout_weight="2"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:weightSum="6"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:src="@drawable/ic_calendar"
+                            android:padding="10dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="3"/>
+                        <TextView
+                            android:textAlignment="center"
+                            android:id="@+id/textdate"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+                        <Button
+                            android:textSize="11dp"
+                            android:background="@color/colorPrimaryDark"
+                            android:text="Changer Heure"
+                            android:layout_marginVertical="10dp"
+                            android:id="@+id/selectdate"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+              </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:cardCornerRadius="10dp"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="3">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="15dp"
-                android:text="Nombre de Cas"
-                android:layout_weight="1"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-
-                android:inputType="numberDecimal" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="30dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="3">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:paddingLeft="15dp"
-                android:text="Nombre de Guerison" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-
-                android:inputType="numberDecimal" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="30dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="3">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:paddingLeft="15dp"
-                android:text="Nombre de Morts" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-
-                android:inputType="numberDecimal" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:weightSum="2"
+    android:layout_weight="1">
+<Button
+    android:id="@+id/buttonannuler"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_margin="40dp"
+    android:text="Annuler"
+    android:background="@drawable/costum_button"
+    android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/buttonenregistrer"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_margin="40dp"
+        android:text="Enregistrer"
+        android:background="@drawable/costum_button"
+        android:layout_height="match_parent"/>
+</LinearLayout>
 </LinearLayout>
