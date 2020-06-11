@@ -80,16 +80,18 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         val menu = bottomNavigationView.menu
         val menuItem = menu.getItem(0)
         menuItem.isChecked = true
-        bottomNavigationView.setOnNavigationItemReselectedListener {
+        bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.page_1 -> {
-
+                    true
                 }
                 R.id.page_4 -> {
                     val intent = Intent(this,GuerisonMortActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    true
                 }
-
+                else->false
             }
             true
         }
@@ -104,6 +106,9 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
     override fun finish() {
         super.finish()
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+
     }
    override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
