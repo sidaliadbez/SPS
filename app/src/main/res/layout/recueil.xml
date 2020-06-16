@@ -122,6 +122,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginTop="270dp"
         android:gravity="center"
+        android:id="@+id/date"
         android:text="Dernière. màj : 13 Mai 2020 "
         android:textColor="@color/colorRec"
         android:textSize="15sp"
@@ -143,7 +144,7 @@
     <GridLayout
 
         android:layout_width="396dp"
-        android:layout_height="140dip"
+        android:layout_height="145dip"
         android:layout_centerInParent="true"
         android:layout_marginTop="290dp"
         android:layout_marginLeft="-80dp"
@@ -174,7 +175,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/actifplus"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_marginLeft="37dp"
@@ -190,7 +191,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/actif"
             android:layout_row="2"
             android:layout_column="0"
             android:layout_marginLeft="32dp"
@@ -234,7 +235,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/gerplus"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_marginLeft="80dp"
@@ -250,7 +251,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/ger"
             android:layout_row="2"
             android:layout_column="1"
             android:layout_marginLeft="70dp"
@@ -292,7 +293,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/deadplus"
             android:layout_row="1"
             android:layout_column="2"
             android:layout_marginLeft="80dp"
@@ -308,7 +309,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/dead"
             android:layout_row="2"
             android:layout_column="2"
             android:layout_marginLeft="78dp"
@@ -328,7 +329,7 @@
             android:layout_row="3"
             android:layout_column="2"
             android:layout_marginLeft="76dp"
-            android:text="Décés"
+            android:text=" Décés"
             android:textColor="@color/dead"
             android:textSize="13sp"
 
@@ -344,11 +345,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="444dp"
+        android:layout_marginTop="447dp"
         android:gravity="center"
         android:text="Tendances de propagation"
         android:textColor="@color/colorRec"
-        android:textSize="21sp"
+        android:textSize="20sp"
 
         android:textStyle="bold"
 
@@ -384,7 +385,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/actiff"
             android:layout_marginTop="-6dp"
             android:layout_marginLeft="174dp"
             android:text="7,987"
@@ -399,9 +400,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/plusactif"
             android:layout_marginTop="-6dp"
-
             android:text="[+125]"
             android:textStyle="bold"
             android:textColor="@color/actif"
