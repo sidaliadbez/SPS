@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             var find=false
             var choix=0
 
+
+
             val filename = "dataUser"
             if(filename.toString()!=null && filename.toString().trim()!=""){
                 var fileInputStream: FileInputStream? = null
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 }
-                println("yew bda hakka"+i)
+
                 val cols = stringBuilder.split(",".toRegex()).toTypedArray()
 
                 // val cols = it.split(",".toRegex()).toTypedArray()
