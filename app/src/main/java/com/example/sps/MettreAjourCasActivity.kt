@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sps.MainActivity.Companion.db
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_mettreajourcas.*
 import java.text.SimpleDateFormat
@@ -102,18 +103,20 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
                 radioButton?.text.toString(),age.text.toString(),texttime.text.toString(),textdate.text.toString())
             GuerisonMortActivity.cass.add(cas)
             Toast.makeText(this,"Enregistré Avec Succés ",Toast.LENGTH_SHORT).show()
+
             when(wilaya){
                 "Alger"->{
-
+                    db.updateWilaya(db.readWilaya().get(2).id.toString(),"alger",db.readWilaya().get(2).nbcas+1,db.readWilaya().get(2).lag,db.readWilaya().get(2).lng)
                 }
                 "Oran"->{
-
+                    db.updateWilaya(db.readWilaya().get(3).id.toString(),"oran",db.readWilaya().get(3).nbcas+1,db.readWilaya().get(3).lag,db.readWilaya().get(3).lng)
                 }
                 "Annaba"->{
+                    db.updateWilaya(db.readWilaya().get(1).id.toString(),"annaba",db.readWilaya().get(1).nbcas+1,db.readWilaya().get(1).lag,db.readWilaya().get(1).lng)
 
                 }
                 "Bejaia"->{
-
+                    db.updateWilaya(db.readWilaya().get(0).id.toString(),"bejaia",db.readWilaya().get(0).nbcas+1,db.readWilaya().get(0).lag,db.readWilaya().get(0).lng)
                 }
             }
 

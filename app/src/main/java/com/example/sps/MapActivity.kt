@@ -20,10 +20,10 @@ import kotlinx.android.synthetic.main.activity_urgence.*
 
 class MapActivity : AppCompatActivity() , OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     companion object{
-        var bejaia = Wilaya("bejaia",7,36.75587 ,5.08433)
-        var annaba = Wilaya("annaba",10,36.9 ,7.76667)
-        var alger = Wilaya("alger",9,36.754110,3.058785)
-        var oran = Wilaya("oran",5,35.69111 ,-0.64167)
+
+
+
+
     }
 private  lateinit var map : GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,8 @@ private  lateinit var map : GoogleMap
         mapFragment.getMapAsync(this)
 
         buttoncas.setOnClickListener {
-            onMarkerClick(map.addMarker(MarkerOptions().position(LatLng(alger.lag, alger.lng)).title(alger.nom)))
+            onMarkerClick(map.addMarker(MarkerOptions().position(LatLng(MainActivity.db.readWilaya().get(2).lag, MainActivity.db.readWilaya().get(2).lng)).title(
+                MainActivity.db.readWilaya().get(2).nom)))
             if(layoutcaswilaya.visibility==View.VISIBLE)
 
                { layoutcaswilaya.visibility= View.GONE
@@ -47,10 +48,10 @@ private  lateinit var map : GoogleMap
         }
 
         var wilayas = java.util.ArrayList<Wilaya>()
-        wilayas.add(bejaia)
-        wilayas.add(alger)
-        wilayas.add(annaba)
-        wilayas.add(oran)
+        wilayas.add(MainActivity.db.readWilaya().get(0))
+        wilayas.add(MainActivity.db.readWilaya().get(2))
+        wilayas.add(MainActivity.db.readWilaya().get(1))
+        wilayas.add(MainActivity.db.readWilaya().get(3))
         val sorted : List<Wilaya> =  wilayas.sortedBy { it.nom }
         val sortedWilaya = ArrayList<Wilaya>()
         sorted.forEach { sortedWilaya.add(it)  }
@@ -85,14 +86,14 @@ private  lateinit var map : GoogleMap
             map = p0
         }
 
-        val Alger: LatLng= LatLng(alger.lag, alger.lng)
-        map.addMarker(MarkerOptions().position(Alger).title(alger.nom))
-        val Bejaia: LatLng= LatLng(bejaia.lag, bejaia.lng)
-        map.addMarker(MarkerOptions().position(Bejaia).title(bejaia.nom))
-        val Oran: LatLng= LatLng(oran.lag, oran.lng)
-        map.addMarker(MarkerOptions().position(Oran).title(oran.nom))
-        val Annaba: LatLng= LatLng(annaba.lag, annaba.lng)
-        map.addMarker(MarkerOptions().position(Annaba).title(annaba.nom))
+        val Alger: LatLng= LatLng(MainActivity.db.readWilaya().get(2).lag, MainActivity.db.readWilaya().get(2).lng)
+        map.addMarker(MarkerOptions().position(Alger).title(MainActivity.db.readWilaya().get(2).nom))
+        val Bejaia: LatLng= LatLng(MainActivity.db.readWilaya().get(0).lag, MainActivity.db.readWilaya().get(0).lng)
+        map.addMarker(MarkerOptions().position(Bejaia).title(MainActivity.db.readWilaya().get(0).nom))
+        val Oran: LatLng= LatLng(MainActivity.db.readWilaya().get(3).lag, MainActivity.db.readWilaya().get(3).lng)
+        map.addMarker(MarkerOptions().position(Oran).title(MainActivity.db.readWilaya().get(3).nom))
+        val Annaba: LatLng= LatLng(MainActivity.db.readWilaya().get(1).lag, MainActivity.db.readWilaya().get(1).lng)
+        map.addMarker(MarkerOptions().position(Annaba).title(MainActivity.db.readWilaya().get(1).nom))
         val centrealgerie : LatLng= LatLng(30.965656,1.663521)
         map.moveCamera(CameraUpdateFactory.newLatLng(centrealgerie))
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(centrealgerie, 5f))
