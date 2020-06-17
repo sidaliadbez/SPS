@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
                 var text :String=""
 
 
-        db.readCas().forEach{
-            text = text + "---"+it.type + it.wilaya+it.caracteristique1+it.caracteristique2+it.date+it.time
+        db.readWilaya().forEach{
+            text = text + "---"+" "+it.nom +" "+ it.nbcas+" "+it.lag+" "+it.lng
         }
         dbtext.text=text
         button.setOnClickListener {
