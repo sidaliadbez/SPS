@@ -17,7 +17,7 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
     var formate = SimpleDateFormat("dd MMM, YYYY",Locale.FRENCH)
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.FRANCE)
     lateinit var radioGroup:RadioGroup
-
+    lateinit var wilaya: String
 
 
 
@@ -95,6 +95,29 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             }
             true
         }
+        buttonenregistrer.setOnClickListener {
+            val radioId: Int = radioGroup.checkedRadioButtonId
+            var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
+            val cas = cas(1,wilaya,
+                radioButton?.text.toString(),age.text.toString(),texttime.text.toString(),textdate.text.toString())
+            GuerisonMortActivity.cass.add(cas)
+            Toast.makeText(this,"Enregistré Avec Succés ",Toast.LENGTH_SHORT).show()
+            when(wilaya){
+                "Alger"->{
+
+                }
+                "Oran"->{
+
+                }
+                "Annaba"->{
+
+                }
+                "Bejaia"->{
+
+                }
+            }
+
+        }
     }
 
 
@@ -117,7 +140,8 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
        val text = parent?.getItemAtPosition(position).toString()
         if (parent != null) {
-            Toast.makeText(parent.context,text,Toast.LENGTH_SHORT).show()
+            //Toast.makeText(parent.context,text,Toast.LENGTH_SHORT).show()
+            wilaya=text
         }
     }
 
@@ -125,9 +149,9 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
         val radioId: Int = radioGroup.checkedRadioButtonId
         //var radioButton = radioId?.let { findViewById<RadioButton>(it) }
        var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
-        Toast.makeText(
-            this, "Selected Radio Button: " + radioButton?.text,
-            Toast.LENGTH_SHORT
-        ).show()
+//        Toast.makeText(
+//            this, "Selected Radio Button: " + radioButton?.text,
+//            Toast.LENGTH_SHORT
+//        ).show()
     }
 }
