@@ -101,7 +101,8 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
             val cas = cas(1,wilaya,
                 radioButton?.text.toString(),age.text.toString(),texttime.text.toString(),textdate.text.toString())
-            GuerisonMortActivity.cass.add(cas)
+           // GuerisonMortActivity.cass.add(cas)
+            db.addCas(cas)
             Toast.makeText(this,"Enregistré Avec Succés ",Toast.LENGTH_SHORT).show()
 
             when(wilaya){

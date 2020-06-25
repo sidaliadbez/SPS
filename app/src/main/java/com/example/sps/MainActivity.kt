@@ -4,7 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.sps.GuerisonMortActivity.Companion.cass
+
 import com.github.mikephil.charting.charts.CombinedChart
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
@@ -23,9 +23,10 @@ class MainActivity : AppCompatActivity() {
 
                 var text :String=""
 
-
-        db.readWilaya().forEach{
-            text = text + "---"+" "+it.nom +" "+ it.nbcas+" "+it.lag+" "+it.lng
+ val  list  = db.readCas()
+        list.sortBy { it.type }
+        list.forEach{
+            text = text + "---"+" "+it.type +" "+ it.date+" "
         }
         dbtext.text=text
         button.setOnClickListener {

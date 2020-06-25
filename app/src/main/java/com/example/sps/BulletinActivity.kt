@@ -3,6 +3,7 @@ package com.example.sps
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sps.MainActivity.Companion.db
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.CombinedChart
@@ -167,6 +168,8 @@ class BulletinActivity : AppCompatActivity() {
 
 
     fun getbarentries(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
+        val  list = db.readCas()
+
         barEntries.add(BarEntry(1f,30F))
         barEntries.add(BarEntry(2f,20F))
         barEntries.add(BarEntry(3f,15F))
@@ -183,9 +186,10 @@ class BulletinActivity : AppCompatActivity() {
         barEntries.add(Entry(2f,10F))
         barEntries.add(Entry(3f,8F))
         barEntries.add(Entry(4f,35F))
-        barEntries.add(BarEntry(5f,25F))
-        barEntries.add(BarEntry(6f,15f))
-        barEntries.add(BarEntry(7f,13F))
+        barEntries.add(Entry(5f,25F))
+        barEntries.add(Entry(6f,15f))
+        barEntries.add(Entry(7f,13F))
+
 
         return barEntries
     }
