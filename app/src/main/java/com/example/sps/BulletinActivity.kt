@@ -90,8 +90,16 @@ class BulletinActivity : AppCompatActivity() {
         val xxAxis:XAxis = barChart.getXAxis();
         rightAxis.setEnabled(false);
         leftAxis.setEnabled(false);
-        xxAxis.setEnabled(true);
-
+        var ages = ArrayList<String>()
+        ages.add("0")
+        ages.add("5-19")
+        ages.add("20-29")
+        ages.add("30-39")
+        ages.add("40-49")
+        ages.add("50-59")
+        ages.add("60-69")
+        ages.add("70+")
+        barChart.xAxis.valueFormatter= IndexAxisValueFormatter(ages)
         var barEntries = ArrayList<BarEntry>()
         barEntries= getbarentries2(barEntries)
         var barDataSet = BarDataSet(barEntries,"Total des cas")
@@ -102,6 +110,7 @@ class BulletinActivity : AppCompatActivity() {
         data2.setValueTextSize(10f)
         barChart.animateY(3000, Easing.EaseInOutBack)
         barChart.description.isEnabled = false
+        barChart.legend.isEnabled= false
         barChart.data= data2
 
 
@@ -241,13 +250,51 @@ class BulletinActivity : AppCompatActivity() {
 
 
     fun getbarentries2(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
-        barEntries.add(BarEntry(1f,30F))
-        barEntries.add(BarEntry(2f,20F))
-        barEntries.add(BarEntry(3f,15F))
-        barEntries.add(BarEntry(4f,40F))
-        barEntries.add(BarEntry(5f,30F))
-        barEntries.add(BarEntry(6f,20F))
-        barEntries.add(BarEntry(7f,20F))
+
+        val list= db.readCas()
+        var one :Int= 0
+        var two :Int= 0
+        var three :Int= 0
+        var four :Int= 0
+        var five :Int= 0
+        var six :Int= 0
+        var seven :Int= 0
+
+        list.forEach{
+            if(it.type==1){
+                when(it.caracteristique2.toFloat()){
+                   in 0F..19F ->{
+                        one++
+                    }
+                    in 20F..29F ->{
+                        two++
+                    }
+                    in 30F..39F ->{
+                        three++
+                    }
+                    in 40F..49F ->{
+                        four++
+                    }
+                    in 50F..59F ->{
+                        five++
+                    }
+                    in 60F..69F ->{
+                        six++
+                    }
+                    in 70F..110F ->{
+                        seven++
+                    }
+                }
+            }
+
+        }
+        barEntries.add(BarEntry(1f,one.toFloat()))
+        barEntries.add(BarEntry(2f,two.toFloat()))
+        barEntries.add(BarEntry(3f,three.toFloat()))
+        barEntries.add(BarEntry(4f,four.toFloat()))
+        barEntries.add(BarEntry(5f,five.toFloat()))
+        barEntries.add(BarEntry(6f,six.toFloat()))
+        barEntries.add(BarEntry(7f,seven.toFloat()))
 
 
         return barEntries
@@ -257,9 +304,12 @@ class BulletinActivity : AppCompatActivity() {
         var h :Int= 0
         var f :Int= 0
         list.forEach{
-            if (it.caracteristique1=="Male" || it.caracteristique1=="Homme"){
-                h++
-            }else f++
+            if(it.type==1){
+                if (it.caracteristique1=="Male" || it.caracteristique1=="Homme"){
+                    h++
+                }else f++
+            }
+
         }
         barEntries.add(BarEntry(1f,h.toFloat()))
         barEntries.add(BarEntry(2f,f.toFloat()))
