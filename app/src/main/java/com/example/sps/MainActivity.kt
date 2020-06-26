@@ -23,10 +23,12 @@ class MainActivity : AppCompatActivity() {
 
                 var text :String=""
 
- val  list  = db.readCas()
-        list.sortBy { it.type }
+ val  list  = db.readWilaya()
+
+      //  list.sortWith(compareBy<cas> { it.type }.thenBy { it.date })
+
         list.forEach{
-            text = text + "---"+" "+it.type +" "+ it.date+" "
+            text = text + "---"+" "+it.nom +" "//+ it.date+" "
         }
         dbtext.text=text
         button.setOnClickListener {

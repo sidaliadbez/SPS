@@ -13,6 +13,7 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
+import kotlinx.android.synthetic.main.activity_guerisonmort.*
 
 
 class BulletinActivity : AppCompatActivity() {
@@ -117,18 +118,24 @@ class BulletinActivity : AppCompatActivity() {
         val  leftAxish : YAxis= hbarChart.getAxisLeft();
         val rightAxish :YAxis = hbarChart.getAxisRight();
         val xxAxish:XAxis = hbarChart.getXAxis();
-        rightAxish.setEnabled(true);
-        leftAxish.setEnabled(false);
-        xxAxish.setEnabled(false);
-
+       // rightAxish.setEnabled(true);
+       leftAxish.setEnabled(false);
+        //xxAxish.setEnabled(false);
         var hbarEntries = ArrayList<BarEntry>()
         hbarEntries= getbarentries3(hbarEntries)
         var hbarDataSet = BarDataSet(hbarEntries,"Total des cas")
-        hbarDataSet.valueTextColor= Color.BLACK
-        hbarDataSet.color=  Color.parseColor("#5AC7AA")
+        var listColorsh = ArrayList<Int>()
+
+        listColorsh.add(Color.parseColor("#5AC7AA"))
+        listColorsh.add(Color.parseColor("#F24E4E"))
+
+        hbarDataSet.colors=listColorsh
+
+        hbarDataSet.valueTextColor= Color.RED
+
         var data3 = BarData(hbarDataSet)
         data3.barWidth=0.5f
-        data3.setValueTextColor(Color.BLACK)
+        data3.setValueTextColor(Color.RED)
         data3.setValueTextSize(20f)
         hbarChart.animateY(3000, Easing.EaseInOutBack)
         hbarChart.description.isEnabled = false
@@ -156,6 +163,7 @@ class BulletinActivity : AppCompatActivity() {
         pieData.setValueTextSize(0f)
 
         pieChart.data = pieData
+        pieChart.invalidate()
         pieChart.setUsePercentValues(false)
         pieChart.isDrawHoleEnabled = true
         pieChart.description.isEnabled = false
@@ -169,6 +177,8 @@ class BulletinActivity : AppCompatActivity() {
 
     fun getbarentries(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
         val  list = db.readCas()
+        list.sortWith(compareBy<cas> { it.type }.thenBy { it.date })
+
 
         barEntries.add(BarEntry(1f,30F))
         barEntries.add(BarEntry(2f,20F))
@@ -238,10 +248,21 @@ class BulletinActivity : AppCompatActivity() {
         return barEntries
     }
     fun getpieentries(barEntries: ArrayList<PieEntry>):ArrayList<PieEntry>{
-        barEntries.add(PieEntry(30f,"Oran"))
-        barEntries.add(PieEntry(10f,"Blida"))
-        barEntries.add(PieEntry(25f,"Alger"))
-        barEntries.add(PieEntry(35f,"Tipaza"))
+        val list= db.readWilaya()
+        val nbcastotal = list[0].nbcas+list[1].nbcas+list[2].nbcas+list[3].nbcas
+
+        val bejaia : Float = ((list[0].nbcas*100)/nbcastotal).toFloat()
+        val annaba : Float = ((list[1].nbcas*100)/nbcastotal).toFloat()
+        val alger : Float = ((list[2].nbcas*100)/nbcastotal).toFloat()
+        val oran : Float = 100-(bejaia+annaba+alger)
+        barEntries.add(PieEntry(bejaia, "Bejaia $bejaia"+
+                "%"))
+        barEntries.add(PieEntry(annaba,"Annaba $annaba"+
+                "%"))
+        barEntries.add(PieEntry(alger,"Alger $alger"+
+                "%"))
+        barEntries.add(PieEntry(oran,"Oran $oran " +
+                "%"))
 
         return barEntries
     }
