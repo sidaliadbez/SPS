@@ -12,6 +12,7 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.activity_guerisonmort.*
 
@@ -121,6 +122,15 @@ class BulletinActivity : AppCompatActivity() {
        // rightAxish.setEnabled(true);
        leftAxish.setEnabled(false);
         //xxAxish.setEnabled(false);
+        rightAxish.labelCount=2
+        xxAxish.labelCount=2
+        var contry = ArrayList<String>()
+        contry.add("algeria")
+        contry.add("Homme")
+        contry.add("Femme")
+        xxAxish.setDrawAxisLine(false)
+        xxAxish.setDrawGridLines(false)
+        hbarChart.xAxis.valueFormatter= IndexAxisValueFormatter(contry)
         var hbarEntries = ArrayList<BarEntry>()
         hbarEntries= getbarentries3(hbarEntries)
         var hbarDataSet = BarDataSet(hbarEntries,"Total des cas")
@@ -139,6 +149,7 @@ class BulletinActivity : AppCompatActivity() {
         data3.setValueTextSize(20f)
         hbarChart.animateY(3000, Easing.EaseInOutBack)
         hbarChart.description.isEnabled = false
+        hbarChart.legend.isEnabled= false
         hbarChart.data= data3
 
 
@@ -242,8 +253,16 @@ class BulletinActivity : AppCompatActivity() {
         return barEntries
     }
     fun getbarentries3(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
-        barEntries.add(BarEntry(1f,50F))
-        barEntries.add(BarEntry(2f,33F))
+        val list= db.readCas()
+        var h :Int= 0
+        var f :Int= 0
+        list.forEach{
+            if (it.caracteristique1=="Male" || it.caracteristique1=="Homme"){
+                h++
+            }else f++
+        }
+        barEntries.add(BarEntry(1f,h.toFloat()))
+        barEntries.add(BarEntry(2f,f.toFloat()))
 
         return barEntries
     }
