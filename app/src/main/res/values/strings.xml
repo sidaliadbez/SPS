@@ -1,6 +1,14 @@
 <resources>
-    <string name="app_name">SPS</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="app_name">HealthTeck</string>
+    <string name="designed_by_sps"><u><b><i>Designed by SPS</i></b></u></string>
+    <string name="todo">TODO</string>
+    <string name="register"><u><b><i>Copyright</i></b></u></string>
+    <string name="faire_l_auto_v_rification">Faire l\'auto-vérification</string>
+
 </resources>
