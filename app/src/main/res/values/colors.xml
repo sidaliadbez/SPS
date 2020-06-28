@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="grey">#d3d3d3</color>
     <color name="purple">#474787</color>
     <color name="black">#000000</color>
@@ -14,9 +15,6 @@
     <color name="actif">#007BFF</color>
     <color name="heart">#21CF55</color>
     <color name="dead">#FF5050</color>
-
-
-
 
 
 </resources>

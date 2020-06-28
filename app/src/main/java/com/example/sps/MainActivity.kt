@@ -1,21 +1,39 @@
 package com.example.sps
 
-import android.content.Context
+
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
+
+import android.content.Context
+
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+
 import java.io.*
 import java.nio.charset.Charset
 
 
-class MainActivity : AppCompatActivity() {
 
+
+class MainActivity : AppCompatActivity() {
+    companion object{
+        lateinit var db : MindOrksDBOpenHelper
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        db =
+            MindOrksDBOpenHelper(this, null)
+
+
+
+
 
         // get reference to all views
         var et_user_name = findViewById(R.id.username) as EditText
@@ -99,6 +117,7 @@ class MainActivity : AppCompatActivity() {
     startActivity(intent)
 
 
+
 }
 
 
@@ -111,4 +130,5 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
 }

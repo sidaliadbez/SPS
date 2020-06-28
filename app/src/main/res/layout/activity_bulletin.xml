@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Apercu"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_height="0dp" />
+                <com.github.mikephil.charting.charts.CombinedChart
+                    android:id="@+id/combinedchart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9"/>
+            </LinearLayout>
 
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nombre total de cas par groupe d'âge"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_height="0dp" />
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barchart"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nombre total de cas par sexe"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_height="0dp" />
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/hbarchart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
+            android:layout_margin="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nombre total de cas par Wilaya"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_height="0dp" />
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/piechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </TableLayout>
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,30 +9,40 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sps.MainActivity.Companion.db
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_guerisonmort.*
 import kotlinx.android.synthetic.main.activity_mettreajourcas.*
+import kotlinx.android.synthetic.main.activity_mettreajourcas.buttonannuler
+import kotlinx.android.synthetic.main.activity_mettreajourcas.buttonenregistrer
+import kotlinx.android.synthetic.main.activity_mettreajourcas.selectdate
+import kotlinx.android.synthetic.main.activity_mettreajourcas.selecttime
+import kotlinx.android.synthetic.main.activity_mettreajourcas.spinnerwilaya
+import kotlinx.android.synthetic.main.activity_mettreajourcas.textdate
+import kotlinx.android.synthetic.main.activity_mettreajourcas.texttime
 import java.text.SimpleDateFormat
 import java.util.*
 
+class GuerisonMortActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    var formate = SimpleDateFormat("dd MMM, YYYY",Locale.FRENCH)
+    var formate = SimpleDateFormat("dd MMM, YYYY", Locale.FRENCH)
     var timeFormat = SimpleDateFormat("hh:mm a", Locale.FRANCE)
-    lateinit var radioGroup:RadioGroup
+    lateinit var radioGroup: RadioGroup
     lateinit var wilaya: String
-
+companion object{
+    var cass= ArrayList<cas>()
+}
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mettreajourcas)
+        setContentView(R.layout.activity_guerisonmort)
 
 
 
         val currentTime = Calendar.getInstance().time
         val date = formate.format(currentTime.time)
-        textdate.text=date
+        textdate1.text=date
         val time = timeFormat.format(currentTime.time)
-        texttime.text=time
+        texttime1.text=time
         val adapter = ArrayAdapter.createFromResource(this,R.array.array_ressource,android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerwilaya.adapter=adapter
@@ -56,7 +66,7 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
                 val selectedTime = Calendar.getInstance()
                 selectedTime.set(Calendar.HOUR_OF_DAY,hourOfDay)
                 selectedTime.set(Calendar.MINUTE,minute)
-                texttime.text = timeFormat.format(selectedTime.time)
+                texttime1.text = timeFormat.format(selectedTime.time)
             },
                 now.get(Calendar.HOUR_OF_DAY),now.get(Calendar.MINUTE),false)
             timePicker.show()
@@ -70,89 +80,96 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
                 selectedDate.set(Calendar.MONTH,month)
                 selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
                 val date = formate.format(selectedDate.time)
-                textdate.text=date
+                textdate1.text=date
             },
-                    now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
+                now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
         }
 
         val bottomNavigationView =
             findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         val menu = bottomNavigationView.menu
-        val menuItem = menu.getItem(0)
+        val menuItem = menu.getItem(1)
         menuItem.isChecked = true
         bottomNavigationView.setOnNavigationItemSelectedListener {
+
             when (it.itemId) {
                 R.id.page_1 -> {
+                    val intent = Intent(this,MettreAjourCasActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                     true
                 }
                 R.id.page_4 -> {
-                    val intent = Intent(this,GuerisonMortActivity::class.java)
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    true
+
                 }
-                else->false
+
             }
             true
         }
-        buttonenregistrer.setOnClickListener {
+        buttonenregistrer1.setOnClickListener {
             val radioId: Int = radioGroup.checkedRadioButtonId
             var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
-            val cas = cas(1,wilaya,
-                radioButton?.text.toString(),age.text.toString(),texttime.text.toString(),textdate.text.toString())
-           // GuerisonMortActivity.cass.add(cas)
-            db.addCas(cas)
+            if (radioButton?.text.toString()=="Guerison"){
+            val cas = cas(2,wilaya,radioButton?.text.toString(),nbcas.text.toString(),texttime1.text.toString(),textdate1.text.toString())
+                db.addCas(cas)
+            }else{
+                val cas = cas(3,wilaya,radioButton?.text.toString(),nbcas.text.toString(),texttime1.text.toString(),textdate1.text.toString())
+                db.addCas(cas)
+            }
             Toast.makeText(this,"Enregistré Avec Succés ",Toast.LENGTH_SHORT).show()
-
             when(wilaya){
                 "Alger"->{
-                    db.updateWilaya(db.readWilaya().get(2).id.toString(),"alger",db.readWilaya().get(2).nbcas+1,db.readWilaya().get(2).lag,db.readWilaya().get(2).lng)
+                    MainActivity.db.updateWilaya(
+                        MainActivity.db.readWilaya().get(2).id.toString(),"alger",
+                        MainActivity.db.readWilaya().get(2).nbcas-nbcas.text.toString().toInt(),
+                        MainActivity.db.readWilaya().get(2).lag,
+                        MainActivity.db.readWilaya().get(2).lng)
                 }
                 "Oran"->{
-                    db.updateWilaya(db.readWilaya().get(3).id.toString(),"oran",db.readWilaya().get(3).nbcas+1,db.readWilaya().get(3).lag,db.readWilaya().get(3).lng)
+                    MainActivity.db.updateWilaya(
+                        MainActivity.db.readWilaya().get(3).id.toString(),"oran",
+                        MainActivity.db.readWilaya().get(3).nbcas-nbcas.text.toString().toInt(),
+                        MainActivity.db.readWilaya().get(3).lag,
+                        MainActivity.db.readWilaya().get(3).lng)
                 }
                 "Annaba"->{
-                    db.updateWilaya(db.readWilaya().get(1).id.toString(),"annaba",db.readWilaya().get(1).nbcas+1,db.readWilaya().get(1).lag,db.readWilaya().get(1).lng)
+                    MainActivity.db.updateWilaya(
+                        MainActivity.db.readWilaya().get(1).id.toString(),"annaba",
+                        MainActivity.db.readWilaya().get(1).nbcas-nbcas.text.toString().toInt(),
+                        MainActivity.db.readWilaya().get(1).lag,
+                        MainActivity.db.readWilaya().get(1).lng)
 
                 }
                 "Bejaia"->{
-                    db.updateWilaya(db.readWilaya().get(0).id.toString(),"bejaia",db.readWilaya().get(0).nbcas+1,db.readWilaya().get(0).lag,db.readWilaya().get(0).lng)
+                    MainActivity.db.updateWilaya(
+                        MainActivity.db.readWilaya().get(0).id.toString(),"bejaia",
+                        MainActivity.db.readWilaya().get(0).nbcas-nbcas.text.toString().toInt(),
+                        MainActivity.db.readWilaya().get(0).lag,
+                        MainActivity.db.readWilaya().get(0).lng)
                 }
             }
-
         }
     }
-
-
-
-
-
-
-
-
     override fun finish() {
         super.finish()
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
-
     }
-   override fun onNothingSelected(parent: AdapterView<*>?) {
+    override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-       val text = parent?.getItemAtPosition(position).toString()
+        val text = parent?.getItemAtPosition(position).toString()
         if (parent != null) {
-            //Toast.makeText(parent.context,text,Toast.LENGTH_SHORT).show()
+//            Toast.makeText(parent.context,text,Toast.LENGTH_SHORT).show()
             wilaya=text
-        }
-    }
-
+        }    }
     fun checkButton(v: View?) {
         val radioId: Int = radioGroup.checkedRadioButtonId
         //var radioButton = radioId?.let { findViewById<RadioButton>(it) }
-       var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
+        var radioButton = radioId?.let { findViewById<View>(it) } as RadioButton?
 //        Toast.makeText(
 //            this, "Selected Radio Button: " + radioButton?.text,
 //            Toast.LENGTH_SHORT
