@@ -16,21 +16,9 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-        val file:String = "dataUser"
-        val data:String = "wiss,wiss23,ben,wiss,21"
-        val fileOutputStream: FileOutputStream
-        try {
-            fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
-            fileOutputStream.write(data.toByteArray())
-        } catch (e: FileNotFoundException){
-            e.printStackTrace()
-        }catch (e: NumberFormatException){
-            e.printStackTrace()
-        }catch (e: IOException){
-            e.printStackTrace()
-        }catch (e: Exception){
-            e.printStackTrace()
-        }
+
+
+        var file:String = "dataUser"
 
 
 
@@ -51,17 +39,17 @@ class SignUpActivity : AppCompatActivity() {
                     if(phn.text.length==10)
                     {
 
-
+                      //  val file:String = "dataUser"
                         val newuser= User(nu.text.toString(),nom.text.toString(),pre.text.toString(),342,pwd.text.toString())
-                        val intent = Intent(this, RecueilActivity::class.java)
-                        intent.putExtra("usertype", "u")
-                        startActivity(intent)
-                       // println("fffhfghfggfhghhhfgffghgfghhfgfgfghfgfgffgfgffghfhffh"+ newuser.toString())
+
+
+                        // println("fffhfghfggfhghhhfgffghgfghhfgfgfghfgfgffgfgffghfhffh"+ newuser.toString())
                         val data:String = newuser.toString()
                         val fileOutputStream:FileOutputStream
                         try {
                             fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
                             fileOutputStream.write(data.toByteArray())
+                            println("DOnneeeeeeeeeee")
                         } catch (e: FileNotFoundException){
                             e.printStackTrace()
                         }catch (e: NumberFormatException){
@@ -71,6 +59,11 @@ class SignUpActivity : AppCompatActivity() {
                         }catch (e: Exception){
                             e.printStackTrace()
                         }
+                        val intent = Intent(this, RecueilActivity::class.java)
+                        intent.putExtra("usertype", "u")
+                        startActivity(intent)
+
+
 
 
 

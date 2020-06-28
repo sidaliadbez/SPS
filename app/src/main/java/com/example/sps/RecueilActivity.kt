@@ -103,7 +103,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
         val formatted = current.format(formatter)
-      //  println("Current Date and Time is: $formatted")
+       println("Current Date and Time is: $formatted")
 
         var casac =""
         var casdec=""
@@ -119,6 +119,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         readerrr.readLines().forEach {
             val col = it.split(",".toRegex()).toTypedArray()
+
             if ((formatted.toString().equals(col[0]))) {
                 casac=col[1]
                 casdec=col[3]
@@ -128,9 +129,10 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 before3=k
             }
             else{
-               j=col[1]
-                k=col[3]
-                l=col[2]
+
+                j=col[1].toString()
+                k=col[3].toString()
+               l=col[2].toString()
             }
         }
 
