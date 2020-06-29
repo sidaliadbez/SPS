@@ -182,7 +182,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"/>
                         <Button
-                            android:background="@color/colorPrimaryDark"
+                            android:background="#5AC7AA"
                             android:id="@+id/selecttime"                            android:layout_marginBottom="10dp"
                             android:layout_marginVertical="10dp"
                             android:layout_marginHorizontal="15dp"
@@ -213,7 +213,7 @@
                             android:layout_weight="1"/>
                         <Button
                             android:textSize="11dp"
-                            android:background="@color/colorPrimaryDark"
+                            android:background="#5AC7AA"
                             android:text="Changer Heure"
                             android:layout_marginVertical="10dp"
                             android:id="@+id/selectdate"

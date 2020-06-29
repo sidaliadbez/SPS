@@ -153,7 +153,7 @@ companion object{
     }
     override fun finish() {
         super.finish()
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,RecueilActivity::class.java)
         startActivity(intent)
     }
     override fun onNothingSelected(parent: AdapterView<*>?) {

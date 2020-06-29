@@ -16,6 +16,7 @@ import com.google.android.material.navigation.NavigationView
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import kotlinx.android.synthetic.main.activity_recueil_user.*
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -71,8 +72,22 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
 
-
-
+        btn1.setOnClickListener {
+            val intent = Intent(this,GuerisonMortActivity::class.java)
+            startActivity(intent)
+        }
+        btn2.setOnClickListener {
+            val intent = Intent(this,MapActivity::class.java)
+            startActivity(intent)
+        }
+        btn3.setOnClickListener {
+            val intent = Intent(this,UrgenceActivity::class.java)
+            startActivity(intent)
+        }
+        btn4.setOnClickListener {
+            val intent = Intent(this,BulletinActivity::class.java)
+            startActivity(intent)
+        }
         val graph = findViewById(R.id.graph) as GraphView
         //val graph2 = findViewById(R.id.graph) as GraphView
 
@@ -304,15 +319,8 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         //Buttons for The menu
 
 
-        var btn_recueil = findViewById(R.id.btn1) as Button
 
-
-
-
-        btn_recueil.setOnClickListener {
-
-
-        }}
+    }
 
 
 

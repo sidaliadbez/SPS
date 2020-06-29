@@ -133,7 +133,7 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
     override fun finish() {
         super.finish()
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,RecueilActivity::class.java)
         startActivity(intent)
 
     }
