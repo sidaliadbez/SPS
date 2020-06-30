@@ -16,7 +16,12 @@ import com.google.android.material.navigation.NavigationView
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
+import kotlinx.android.synthetic.main.activity_recueil_admin.*
 import kotlinx.android.synthetic.main.activity_recueil_user.*
+import kotlinx.android.synthetic.main.activity_recueil_user.btn1
+import kotlinx.android.synthetic.main.activity_recueil_user.btn2
+import kotlinx.android.synthetic.main.activity_recueil_user.btn3
+import kotlinx.android.synthetic.main.activity_recueil_user.btn4
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -73,8 +78,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
         btn1.setOnClickListener {
-            val intent = Intent(this,MettreAjourCasActivity::class.java)
-            startActivity(intent)
+
         }
         btn2.setOnClickListener {
             val intent = Intent(this,MapActivity::class.java)
@@ -86,6 +90,10 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         }
         btn4.setOnClickListener {
             val intent = Intent(this,BulletinActivity::class.java)
+            startActivity(intent)
+        }
+        btn5.setOnClickListener {
+            val intent = Intent(this,MettreAjourCasActivity::class.java)
             startActivity(intent)
         }
         val graph = findViewById(R.id.graph) as GraphView
