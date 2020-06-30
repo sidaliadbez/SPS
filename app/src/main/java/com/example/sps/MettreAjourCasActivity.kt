@@ -102,7 +102,7 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
             val cas = cas(1,wilaya,
                 radioButton?.text.toString(),age.text.toString(),texttime.text.toString(),textdate.text.toString())
            // GuerisonMortActivity.cass.add(cas)
-            db.addCas(cas)
+         //   db.addCas(cas)
             Toast.makeText(this,"Enregistré Avec Succés ",Toast.LENGTH_SHORT).show()
 
             when(wilaya){
@@ -110,14 +110,14 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
                     db.updateWilaya(db.readWilaya().get(2).id.toString(),"alger",db.readWilaya().get(2).nbcas+1,db.readWilaya().get(2).lag,db.readWilaya().get(2).lng)
                 }
                 "Oran"->{
-                    db.updateWilaya(db.readWilaya().get(3).id.toString(),"oran",db.readWilaya().get(3).nbcas+1,db.readWilaya().get(3).lag,db.readWilaya().get(3).lng)
+                    db.updateWilaya(db.readWilaya().get(3).id.toString(),"oran",1,db.readWilaya().get(3).lag,db.readWilaya().get(3).lng)
                 }
                 "Annaba"->{
                     db.updateWilaya(db.readWilaya().get(1).id.toString(),"annaba",db.readWilaya().get(1).nbcas+1,db.readWilaya().get(1).lag,db.readWilaya().get(1).lng)
 
                 }
                 "Bejaia"->{
-                    db.updateWilaya(db.readWilaya().get(0).id.toString(),"bejaia",db.readWilaya().get(0).nbcas+1,db.readWilaya().get(0).lag,db.readWilaya().get(0).lng)
+                    db.updateWilaya(db.readWilaya().get(0).id.toString(),"bejaia",1,db.readWilaya().get(0).lag,db.readWilaya().get(0).lng)
                 }
             }
 
@@ -133,8 +133,8 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 
     override fun finish() {
         super.finish()
-        val intent = Intent(this,RecueilActivity::class.java)
-        startActivity(intent)
+        /*val intent = Intent(this,RecueilActivity::class.java)
+        startActivity(intent)*/
 
     }
    override fun onNothingSelected(parent: AdapterView<*>?) {

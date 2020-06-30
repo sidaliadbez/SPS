@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
         // get reference to all views
         var et_user_name = findViewById(R.id.username) as EditText
         var et_password = findViewById(R.id.password) as EditText

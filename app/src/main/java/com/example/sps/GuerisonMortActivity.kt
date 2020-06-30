@@ -153,8 +153,8 @@ companion object{
     }
     override fun finish() {
         super.finish()
-        val intent = Intent(this,RecueilActivity::class.java)
-        startActivity(intent)
+        /*val intent = Intent(this,RecueilActivity::class.java)
+        startActivity(intent)*/
     }
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

@@ -73,7 +73,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
         btn1.setOnClickListener {
-            val intent = Intent(this,GuerisonMortActivity::class.java)
+            val intent = Intent(this,MettreAjourCasActivity::class.java)
             startActivity(intent)
         }
         btn2.setOnClickListener {
