@@ -9,27 +9,32 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 import android.content.Context
+import android.os.Build
 
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 
 import java.io.*
 import java.nio.charset.Charset
-
-
+import java.time.Duration
+import java.time.LocalDate
+import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
     companion object{
         lateinit var db : MindOrksDBOpenHelper
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         db =
             MindOrksDBOpenHelper(this, null)
+
 
 
 
