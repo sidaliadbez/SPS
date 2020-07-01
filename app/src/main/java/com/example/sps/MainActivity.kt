@@ -34,6 +34,21 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // get reference to all views
         var et_user_name = findViewById(R.id.username) as EditText
         var et_password = findViewById(R.id.password) as EditText
@@ -69,8 +84,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            val filename = "dataUser"
-            if(filename.toString()!=null && filename.toString().trim()!=""){
+                val filename = "dataUser"
+            if(filename.toString().trim()!=""){
                 var fileInputStream: FileInputStream? = null
                 fileInputStream = openFileInput(filename)
                 var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
@@ -78,23 +93,23 @@ class MainActivity : AppCompatActivity() {
                 val stringBuilder: StringBuilder = StringBuilder()
                 var text: String? = null
                 while ({ text = bufferedReader.readLine(); text }() != null) {
-                    stringBuilder.append(text)
+                   // stringBuilder.append(text)
+
+                    val cols = text!!.split(",".toRegex()).toTypedArray()
+
+                    // val cols = it.split(",".toRegex()).toTypedArray()
+                    i=i+1
+                    if ((et_user_name.text.toString().equals(cols[0]))&&(et_password.text.toString().equals(cols[1]))){
+
+                        println("YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
+                        find=true
+                        choix=i
+                        if(et_user_name.text.toString().equals("wiss")){ choix=2}
+                        println("find="+find)
+                        println("wel i "+choix)
+                    }
 
 
-                }
-
-                val cols = stringBuilder.split(",".toRegex()).toTypedArray()
-
-                // val cols = it.split(",".toRegex()).toTypedArray()
-                i=i+1
-                if ((et_user_name.text.toString().equals(cols[0]))&&(et_password.text.toString().equals(cols[1]))){
-
-                    println("YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS")
-                    find=true
-                    choix=i
-                   if(et_user_name.text.toString().equals("wiss")){ choix=2}
-                    println("find="+find)
-                    println("wel i "+choix)
                 }
 
                 //Displaying data on EditText

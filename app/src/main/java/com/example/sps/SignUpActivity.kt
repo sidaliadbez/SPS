@@ -8,9 +8,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.IOException
+import java.io.*
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +36,27 @@ class SignUpActivity : AppCompatActivity() {
                 {
                     if(phn.text.length==10)
                     {
+                        var best:String=""
+                        val filename = "dataUser"
+                        if(filename.toString()!=null && filename.toString().trim()!="") {
+                            var fileInputStream: FileInputStream? = null
+                            fileInputStream = openFileInput(filename)
+                            var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
+                            val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
+                            val stringBuilder: StringBuilder = StringBuilder()
+                            var text: String? = null
+                            while ({ text = bufferedReader.readLine(); text }() != null) {
+                                stringBuilder.append(text)
+
+                                best=best+stringBuilder.toString()+"\n"
+                            }
+                            //Displaying data on EditText
+                            // fileData.setText(stringBuilder.toString()).toString()
+                            println("listattatatatatatatattattatat \n "+best)
+
+
+                        }
+
 
                       //  val file:String = "dataUser"
                         val newuser= User(nu.text.toString(),nom.text.toString(),pre.text.toString(),342,pwd.text.toString())
@@ -45,11 +64,12 @@ class SignUpActivity : AppCompatActivity() {
 
                         // println("fffhfghfggfhghhhfgffghgfghhfgfgfghfgfgffgfgffghfhffh"+ newuser.toString())
                         val data:String = newuser.toString()
+                        best=best+data+"\n"
                         val fileOutputStream:FileOutputStream
                         try {
                             fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
-                            fileOutputStream.write(data.toByteArray())
-                            println("DOnneeeeeeeeeee")
+                            fileOutputStream.write(best.toByteArray())
+                            println("DOnneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+best)
                         } catch (e: FileNotFoundException){
                             e.printStackTrace()
                         }catch (e: NumberFormatException){
