@@ -29,8 +29,11 @@ import java.io.FileInputStream
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.nio.charset.Charset
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -271,33 +274,49 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         var btn_ajour = findViewById(R.id.update) as Button
         btn_ajour.setOnClickListener {
-            textView. setText(casac). toString()
-
-            textView2. setText(" "+casger). toString()
-
-            textView3. setText(casdec). toString()
-
-            textView4. setText("Dernière. màj : "+formattedd). toString()
-
-            textView5. setText(casac+" "). toString()
-/*
-            if(sum1>0){
-                textView6. setText(" [+"+sum1.toString()+"]"). toString()
-                textView9.setText(textView6.text.toString())
+            val listWilaya= db.readWilaya()
+            var nbcasactif= 0
+            listWilaya.forEach {
+                nbcasactif+= it.nbcas
             }
-            if(sum2>0){
-                textView7. setText(" [+"+sum2.toString()+"]"). toString()}
-            if(sum3>0){
-                textView8. setText(" [+"+sum3.toString()+"]"). toString()}
+            actif.text=nbcasactif.toString()
 
-            if(sum1<0){
-                textView6. setText(" ["+sum1.toString()+"]"). toString()
-                textView9.setText(textView6.text.toString())}
-            if(sum2<0){
-                textView7. setText(" ["+sum2.toString()+"]"). toString()}
-            if(sum3<0){
-                textView8. setText(" ["+sum3.toString()+"]"). toString()}
-*/
+            val listcas= db.readCas()
+            var guerison = 0
+            var morts= 0
+            listcas.forEach {
+                if (it.type==2){
+                    guerison++
+                }
+                if (it.type==3){
+                    morts++
+                }
+            }
+            ger.text= guerison.toString()
+            dead.text=morts.toString()
+
+            var formate = SimpleDateFormat("dd MMM, yyyy", Locale.FRENCH)
+
+            val currentTime = Calendar.getInstance().time
+            val datedork = formate.format(currentTime.time)
+            val datedork1= formate.parse(datedork)
+            var newcas= 0
+            var newguerison =0
+            var newmorts=0
+            listcas.forEach {
+                var date = formate.parse(it.date)
+                if(datedork1.compareTo(date)==0){
+                    when(it.type){
+                        1->newcas++
+                        2->newguerison++
+                        3->newmorts++
+                    }
+                }
+            }
+            actifplus.text= "[+"+newcas.toString()+"]"
+            gerplus.text= "[+"+newguerison.toString()+"]"
+            deadplus.text= "[+"+newmorts.toString()+"]"
+
         }
 
 
@@ -381,6 +400,28 @@ actif.text=nbcasactif.toString()
         }
         ger.text= guerison.toString()
         dead.text=morts.toString()
+
+        var formate = SimpleDateFormat("dd MMM, yyyy", Locale.FRENCH)
+
+                val currentTime = Calendar.getInstance().time
+                val datedork = formate.format(currentTime.time)
+                val datedork1= formate.parse(datedork)
+        var newcas= 0
+        var newguerison =0
+        var newmorts=0
+        listcas.forEach {
+            var date = formate.parse(it.date)
+                if(datedork1.compareTo(date)==0){
+                    when(it.type){
+                        1->newcas++
+                        2->newguerison++
+                        3->newmorts++
+                    }
+                }
+        }
+        actifplus.text= "[+"+newcas.toString()+"]"
+        gerplus.text= "[+"+newguerison.toString()+"]"
+        deadplus.text= "[+"+newmorts.toString()+"]"
 
     }
 
