@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.sps.MainActivity.Companion.db
 import com.google.android.material.navigation.NavigationView
 import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.series.DataPoint
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_recueil_user.btn1
 import kotlinx.android.synthetic.main.activity_recueil_user.btn2
 import kotlinx.android.synthetic.main.activity_recueil_user.btn3
 import kotlinx.android.synthetic.main.activity_recueil_user.btn4
+import kotlinx.android.synthetic.main.recueil.*
 import java.io.BufferedReader
 import java.io.FileInputStream
 import java.io.InputStream
@@ -194,9 +196,9 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             }
         }
 
-        var sum1=casac.toInt()-before.toInt()
+     /*   var sum1=casac.toInt()-before.toInt()
         var sum2=casger.toInt()-before2.toInt()
-        var sum3=casdec.toInt()-before3.toInt()
+        var sum3=casdec.toInt()-before3.toInt()*/
 
 
 
@@ -226,7 +228,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
 
-
+/*
         if(sum1>0){
         textView6. setText(" [+"+sum1.toString()+"]"). toString()
             textView9.setText(textView6.text.toString())
@@ -243,8 +245,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             textView7. setText(" ["+sum2.toString()+"]"). toString()}
         if(sum3<0){
             textView8. setText(" ["+sum3.toString()+"]"). toString()}
-
-
+*/
 
 
 
@@ -279,7 +280,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             textView4. setText("Dernière. màj : "+formattedd). toString()
 
             textView5. setText(casac+" "). toString()
-
+/*
             if(sum1>0){
                 textView6. setText(" [+"+sum1.toString()+"]"). toString()
                 textView9.setText(textView6.text.toString())
@@ -296,7 +297,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 textView7. setText(" ["+sum2.toString()+"]"). toString()}
             if(sum3<0){
                 textView8. setText(" ["+sum3.toString()+"]"). toString()}
-
+*/
         }
 
 
@@ -360,8 +361,26 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
         //Buttons for The menu
+val listWilaya= db.readWilaya()
+        var nbcasactif= 0
+        listWilaya.forEach {
+            nbcasactif+= it.nbcas
+        }
+actif.text=nbcasactif.toString()
 
-
+        val listcas= db.readCas()
+        var guerison = 0
+        var morts= 0
+        listcas.forEach {
+            if (it.type==2){
+                guerison++
+            }
+            if (it.type==3){
+                morts++
+            }
+        }
+        ger.text= guerison.toString()
+        dead.text=morts.toString()
 
     }
 
