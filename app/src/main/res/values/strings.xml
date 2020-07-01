@@ -10,5 +10,6 @@
     <string name="todo">TODO</string>
     <string name="register"><u><b><i>Copyright</i></b></u></string>
     <string name="faire_l_auto_v_rification">Faire l\'auto-vérification</string>
+    <string name="tendances_de_propagation">Tendances de propagation</string>
 
 </resources>

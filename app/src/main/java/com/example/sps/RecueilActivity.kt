@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_recueil_user.btn2
 import kotlinx.android.synthetic.main.activity_recueil_user.btn3
 import kotlinx.android.synthetic.main.activity_recueil_user.btn4
 import java.io.BufferedReader
+import java.io.FileInputStream
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.nio.charset.Charset
@@ -38,7 +39,7 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        var strr: String? = ""
 
         val intent = intent
         if (intent != null){
@@ -46,12 +47,41 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             var str: String? = ""
             if (intent.hasExtra("usertype")) { // vérifie qu'une valeur est associée à la clé “usertype”
                 str = intent.getStringExtra("usertype") // on récupère la valeur associée à la clé
-
+  strr=str
                 if (str=="a"){ setContentView(R.layout.activity_recueil_admin)}
                 if (str=="u"){ setContentView(R.layout.activity_recueil_user)}
             }
 
         }
+
+
+
+        val filename ="dataUser"
+        if( filename.toString().trim()!=""){
+            var fileInputStream: FileInputStream? = null
+            fileInputStream = openFileInput(filename)
+            var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
+            val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
+            val stringBuilder: StringBuilder = StringBuilder()
+            var text: String? = null
+            while ({ text = bufferedReader.readLine(); text }() != null) {
+                stringBuilder.append(text)
+                Toast.makeText(this@RecueilActivity,stringBuilder.toString() , Toast.LENGTH_LONG).show()
+            }
+            //Displaying data on EditText
+           // fileData.setText(stringBuilder.toString()).toString()
+
+        }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -92,14 +122,15 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             val intent = Intent(this,BulletinActivity::class.java)
             startActivity(intent)
         }
-       /* btn5.setOnClickListener {
-            val intent = Intent(this,MettreAjourCasActivity::class.java)
-            startActivity(intent)
-        }*/
+
+
+
+        if (strr=="a"){
+
         btn5.setOnClickListener {
-            val intent = Intent(this,MettreAjourCasActivity::class.java)
+          val intent = Intent(this,MettreAjourCasActivity::class.java)
             startActivity(intent)
-        }
+        }}
         val graph = findViewById(R.id.graph) as GraphView
         //val graph2 = findViewById(R.id.graph) as GraphView
 
@@ -163,9 +194,9 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             }
         }
 
-//        var sum1=casac.toInt()-before.toInt()
-//        var sum2=casger.toInt()-before2.toInt()
-//        var sum3=casdec.toInt()-before3.toInt()
+        var sum1=casac.toInt()-before.toInt()
+        var sum2=casger.toInt()-before2.toInt()
+        var sum3=casdec.toInt()-before3.toInt()
 
 
 
@@ -196,22 +227,22 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
 
-//        if(sum1>0){
-//        textView6. setText(" [+"+sum1.toString()+"]"). toString()
-//            textView9.setText(textView6.text.toString())
-//        }
-//        if(sum2>0){
-//        textView7. setText(" [+"+sum2.toString()+"]"). toString()}
-//        if(sum3>0){
-//        textView8. setText(" [+"+sum3.toString()+"]"). toString()}
-//
-//        if(sum1<0){
-//            textView6. setText(" ["+sum1.toString()+"]"). toString()
-//            textView9.setText(textView6.text.toString())}
-//        if(sum2<0){
-//            textView7. setText(" ["+sum2.toString()+"]"). toString()}
-//        if(sum3<0){
-//            textView8. setText(" ["+sum3.toString()+"]"). toString()}
+        if(sum1>0){
+        textView6. setText(" [+"+sum1.toString()+"]"). toString()
+            textView9.setText(textView6.text.toString())
+        }
+        if(sum2>0){
+        textView7. setText(" [+"+sum2.toString()+"]"). toString()}
+        if(sum3>0){
+        textView8. setText(" [+"+sum3.toString()+"]"). toString()}
+
+        if(sum1<0){
+            textView6. setText(" ["+sum1.toString()+"]"). toString()
+            textView9.setText(textView6.text.toString())}
+        if(sum2<0){
+            textView7. setText(" ["+sum2.toString()+"]"). toString()}
+        if(sum3<0){
+            textView8. setText(" ["+sum3.toString()+"]"). toString()}
 
 
 
@@ -249,22 +280,22 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
             textView5. setText(casac+" "). toString()
 
-//            if(sum1>0){
-//                textView6. setText(" [+"+sum1.toString()+"]"). toString()
-//                textView9.setText(textView6.text.toString())
-//            }
-//            if(sum2>0){
-//                textView7. setText(" [+"+sum2.toString()+"]"). toString()}
-//            if(sum3>0){
-//                textView8. setText(" [+"+sum3.toString()+"]"). toString()}
-//
-//            if(sum1<0){
-//                textView6. setText(" ["+sum1.toString()+"]"). toString()
-//                textView9.setText(textView6.text.toString())}
-//            if(sum2<0){
-//                textView7. setText(" ["+sum2.toString()+"]"). toString()}
-//            if(sum3<0){
-//                textView8. setText(" ["+sum3.toString()+"]"). toString()}
+            if(sum1>0){
+                textView6. setText(" [+"+sum1.toString()+"]"). toString()
+                textView9.setText(textView6.text.toString())
+            }
+            if(sum2>0){
+                textView7. setText(" [+"+sum2.toString()+"]"). toString()}
+            if(sum3>0){
+                textView8. setText(" [+"+sum3.toString()+"]"). toString()}
+
+            if(sum1<0){
+                textView6. setText(" ["+sum1.toString()+"]"). toString()
+                textView9.setText(textView6.text.toString())}
+            if(sum2<0){
+                textView7. setText(" ["+sum2.toString()+"]"). toString()}
+            if(sum3<0){
+                textView8. setText(" ["+sum3.toString()+"]"). toString()}
 
         }
 
