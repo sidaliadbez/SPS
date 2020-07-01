@@ -291,6 +291,7 @@ class BulletinActivity : AppCompatActivity() {
         return barEntries
     }
 
+
     fun  linedataset (set: LineDataSet): LineDataSet {
         set.setColor(Color.rgb(240, 238, 70));
         set.setColors(Color.YELLOW);

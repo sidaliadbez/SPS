@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     companion object{
         lateinit var db : MindOrksDBOpenHelper
     }
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
