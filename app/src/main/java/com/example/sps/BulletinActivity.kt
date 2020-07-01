@@ -15,6 +15,10 @@ import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.android.synthetic.main.activity_guerisonmort.*
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 
 class BulletinActivity : AppCompatActivity() {
@@ -196,29 +200,92 @@ class BulletinActivity : AppCompatActivity() {
 
 
     fun getbarentries(barEntries: ArrayList<BarEntry>):ArrayList<BarEntry>{
+        var day1= 0
+        var day2= 0
+        var day3= 0
+        var day4= 0
+        var day5= 0
+        var day6= 0
+        var day7= 0
         val  list = db.readCas()
         list.sortWith(compareBy<cas> { it.type }.thenBy { it.date })
+        var formate = SimpleDateFormat("dd MMM, yyyy", Locale.FRENCH)
+        for (cas in list){
+            if (cas.type==1){
+                val currentTime = Calendar.getInstance().time
+                val datedork = formate.format(currentTime.time)
+                val datedork1= formate.parse(datedork)
+                val date= formate.parse(cas.date)
+                val betweendays = datedork1.time - date.time
+                val nbdays =TimeUnit.DAYS.convert(betweendays, TimeUnit.MILLISECONDS)
+                when(nbdays){
+                    0L-> day1++
+                    1L-> day2++
+                    2L-> day3++
+                    3L-> day4++
+                    4L-> day5++
+                    5L-> day6++
+                    6L-> day7++
+                    else->{
 
+                    }
+                }
+            }
+        }
 
-        barEntries.add(BarEntry(1f,30F))
-        barEntries.add(BarEntry(2f,20F))
-        barEntries.add(BarEntry(3f,15F))
-        barEntries.add(BarEntry(4f,40F))
-        barEntries.add(BarEntry(5f,30F))
-        barEntries.add(BarEntry(6f,20F))
-        barEntries.add(BarEntry(7f,20F))
+        barEntries.add(BarEntry(1f,day7.toFloat()))
+        barEntries.add(BarEntry(2f,day6.toFloat()))
+        barEntries.add(BarEntry(3f,day5.toFloat()))
+        barEntries.add(BarEntry(4f,day4.toFloat()))
+        barEntries.add(BarEntry(5f,day3.toFloat()))
+        barEntries.add(BarEntry(6f,day2.toFloat()))
+        barEntries.add(BarEntry(7f,day1.toFloat()))
 
 
         return barEntries
     }
     fun lineentries(barEntries: ArrayList<Entry>):ArrayList<Entry>{
-        barEntries.add(Entry(1f,20F))
-        barEntries.add(Entry(2f,10F))
-        barEntries.add(Entry(3f,8F))
-        barEntries.add(Entry(4f,35F))
-        barEntries.add(Entry(5f,25F))
-        barEntries.add(Entry(6f,15f))
-        barEntries.add(Entry(7f,13F))
+        var day1= 0
+        var day2= 0
+        var day3= 0
+        var day4= 0
+        var day5= 0
+        var day6= 0
+        var day7= 0
+        val  list = db.readCas()
+        list.sortWith(compareBy<cas> { it.type }.thenBy { it.date })
+        var formate = SimpleDateFormat("dd MMM, yyyy", Locale.FRENCH)
+        for (cas in list){
+            if (cas.type==3){
+                val currentTime = Calendar.getInstance().time
+                val datedork = formate.format(currentTime.time)
+                val datedork1= formate.parse(datedork)
+                val date= formate.parse(cas.date)
+                val betweendays = datedork1.time - date.time
+                val nbdays =TimeUnit.DAYS.convert(betweendays, TimeUnit.MILLISECONDS)
+                when(nbdays){
+                    0L-> day1 += cas.caracteristique2.toInt()
+                    1L-> day2+= cas.caracteristique2.toInt()
+                    2L-> day3+= cas.caracteristique2.toInt()
+                    3L-> day4+= cas.caracteristique2.toInt()
+                    4L-> day5+= cas.caracteristique2.toInt()
+                    5L-> day6+= cas.caracteristique2.toInt()
+                    6L-> day7+= cas.caracteristique2.toInt()
+                    else->{
+
+                    }
+                }
+            }
+        }
+
+        barEntries.add(Entry(1f,day7.toFloat()))
+        barEntries.add(Entry(2f,day6.toFloat()))
+        barEntries.add(Entry(3f,day5.toFloat()))
+        barEntries.add(Entry(4f,day4.toFloat()))
+        barEntries.add(Entry(5f,day3.toFloat()))
+        barEntries.add(Entry(6f,day2.toFloat()))
+        barEntries.add(Entry(7f,day1.toFloat()))
+
 
 
         return barEntries
