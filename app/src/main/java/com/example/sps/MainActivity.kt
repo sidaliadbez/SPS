@@ -34,8 +34,48 @@ class MainActivity : AppCompatActivity() {
 
         db =
             MindOrksDBOpenHelper(this, null)
+ val list = db.readCas()
 
-
+        var formate = SimpleDateFormat("dd MMM, YYYY",Locale.FRENCH)
+        var timeFormat = SimpleDateFormat("hh:mm a", Locale.FRANCE)
+        val currentTime = Calendar.getInstance().time
+//
+//for (x in 0..34){
+//    var Nwilaya=(1..4).random()
+//    var Nsexe =(1..2).random()
+//    var age =(1..100).random()
+//    var wilaya:String="bejaia"
+//    var sexe:String="Femme"
+//    when(Nwilaya){
+//        1->{
+//            wilaya="alger"
+//            db.updateWilaya(db.readWilaya().get(2).id.toString(),"alger",db.readWilaya().get(2).nbcas+1,db.readWilaya().get(2).lag,db.readWilaya().get(2).lng)
+//        }
+//        2->{
+//            wilaya="annaba"
+//            db.updateWilaya(db.readWilaya().get(1).id.toString(),"annaba",db.readWilaya().get(1).nbcas+1,db.readWilaya().get(1).lag,db.readWilaya().get(1).lng)
+//        }
+//        3->{
+//            wilaya="bejaia"
+//            db.updateWilaya(db.readWilaya().get(0).id.toString(),"bejaia",db.readWilaya().get(0).nbcas+1,db.readWilaya().get(0).lag,db.readWilaya().get(0).lng)
+//        }
+//        4->{
+//            wilaya="oran"
+//            db.updateWilaya(db.readWilaya().get(3).id.toString(),"oran",db.readWilaya().get(3).nbcas+1,db.readWilaya().get(3).lag,db.readWilaya().get(3).lng)
+//        }
+//    }
+//
+//    when(Nsexe){
+//        1->{
+//            sexe="Homme"
+//        }
+//        2->{
+//            sexe="Femme"
+//        }
+//    }
+//    var cas= cas(1, wilaya, sexe, age.toString(), timeFormat.format(currentTime.time), formate.format(currentTime.time))
+//        db.addCas(cas)
+//}
 
 
 

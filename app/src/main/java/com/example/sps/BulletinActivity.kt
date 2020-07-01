@@ -264,13 +264,13 @@ class BulletinActivity : AppCompatActivity() {
                 val betweendays = datedork1.time - date.time
                 val nbdays =TimeUnit.DAYS.convert(betweendays, TimeUnit.MILLISECONDS)
                 when(nbdays){
-                    0L-> day1++
-                    1L-> day2++
-                    2L-> day3++
-                    3L-> day4++
-                    4L-> day5++
-                    5L-> day6++
-                    6L-> day7++
+                    0L-> day1 += cas.caracteristique2.toInt()
+                    1L-> day2+= cas.caracteristique2.toInt()
+                    2L-> day3+= cas.caracteristique2.toInt()
+                    3L-> day4+= cas.caracteristique2.toInt()
+                    4L-> day5+= cas.caracteristique2.toInt()
+                    5L-> day6+= cas.caracteristique2.toInt()
+                    6L-> day7+= cas.caracteristique2.toInt()
                     else->{
 
                     }

@@ -92,6 +92,10 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             val intent = Intent(this,BulletinActivity::class.java)
             startActivity(intent)
         }
+       /* btn5.setOnClickListener {
+            val intent = Intent(this,MettreAjourCasActivity::class.java)
+            startActivity(intent)
+        }*/
         btn5.setOnClickListener {
             val intent = Intent(this,MettreAjourCasActivity::class.java)
             startActivity(intent)
@@ -159,9 +163,9 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             }
         }
 
-        var sum1=casac.toInt()-before.toInt()
-        var sum2=casger.toInt()-before2.toInt()
-        var sum3=casdec.toInt()-before3.toInt()
+//        var sum1=casac.toInt()-before.toInt()
+//        var sum2=casger.toInt()-before2.toInt()
+//        var sum3=casdec.toInt()-before3.toInt()
 
 
 
@@ -192,22 +196,22 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
 
-        if(sum1>0){
-        textView6. setText(" [+"+sum1.toString()+"]"). toString()
-            textView9.setText(textView6.text.toString())
-        }
-        if(sum2>0){
-        textView7. setText(" [+"+sum2.toString()+"]"). toString()}
-        if(sum3>0){
-        textView8. setText(" [+"+sum3.toString()+"]"). toString()}
-
-        if(sum1<0){
-            textView6. setText(" ["+sum1.toString()+"]"). toString()
-            textView9.setText(textView6.text.toString())}
-        if(sum2<0){
-            textView7. setText(" ["+sum2.toString()+"]"). toString()}
-        if(sum3<0){
-            textView8. setText(" ["+sum3.toString()+"]"). toString()}
+//        if(sum1>0){
+//        textView6. setText(" [+"+sum1.toString()+"]"). toString()
+//            textView9.setText(textView6.text.toString())
+//        }
+//        if(sum2>0){
+//        textView7. setText(" [+"+sum2.toString()+"]"). toString()}
+//        if(sum3>0){
+//        textView8. setText(" [+"+sum3.toString()+"]"). toString()}
+//
+//        if(sum1<0){
+//            textView6. setText(" ["+sum1.toString()+"]"). toString()
+//            textView9.setText(textView6.text.toString())}
+//        if(sum2<0){
+//            textView7. setText(" ["+sum2.toString()+"]"). toString()}
+//        if(sum3<0){
+//            textView8. setText(" ["+sum3.toString()+"]"). toString()}
 
 
 
@@ -245,22 +249,22 @@ class RecueilActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
             textView5. setText(casac+" "). toString()
 
-            if(sum1>0){
-                textView6. setText(" [+"+sum1.toString()+"]"). toString()
-                textView9.setText(textView6.text.toString())
-            }
-            if(sum2>0){
-                textView7. setText(" [+"+sum2.toString()+"]"). toString()}
-            if(sum3>0){
-                textView8. setText(" [+"+sum3.toString()+"]"). toString()}
-
-            if(sum1<0){
-                textView6. setText(" ["+sum1.toString()+"]"). toString()
-                textView9.setText(textView6.text.toString())}
-            if(sum2<0){
-                textView7. setText(" ["+sum2.toString()+"]"). toString()}
-            if(sum3<0){
-                textView8. setText(" ["+sum3.toString()+"]"). toString()}
+//            if(sum1>0){
+//                textView6. setText(" [+"+sum1.toString()+"]"). toString()
+//                textView9.setText(textView6.text.toString())
+//            }
+//            if(sum2>0){
+//                textView7. setText(" [+"+sum2.toString()+"]"). toString()}
+//            if(sum3>0){
+//                textView8. setText(" [+"+sum3.toString()+"]"). toString()}
+//
+//            if(sum1<0){
+//                textView6. setText(" ["+sum1.toString()+"]"). toString()
+//                textView9.setText(textView6.text.toString())}
+//            if(sum2<0){
+//                textView7. setText(" ["+sum2.toString()+"]"). toString()}
+//            if(sum3<0){
+//                textView8. setText(" ["+sum3.toString()+"]"). toString()}
 
         }
 
