@@ -27,6 +27,9 @@ class BulletinActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bulletin)
 
+
+        supportActionBar?.title="Bulletins Épidémiologiques"
+
         var combinedchart : CombinedChart = findViewById(R.id.combinedchart)
         combinedchart.setDrawBarShadow(false)
         combinedchart.setDrawValueAboveBar(true)

@@ -15,6 +15,7 @@ companion object{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_urgence)
+        supportActionBar?.title="Urgences et Alertes"
 //        val Urgence =Urgence("Urgence 1 ", "Ceci est une Urgence")
 //        val Urgence2 =Urgence("Urgence 2 ", "Ceci est une Urgence")
 

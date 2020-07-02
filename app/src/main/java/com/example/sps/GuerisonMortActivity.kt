@@ -35,7 +35,7 @@ companion object{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guerisonmort)
-
+        supportActionBar?.title="Ajout Cas"
 
 
         val currentTime = Calendar.getInstance().time

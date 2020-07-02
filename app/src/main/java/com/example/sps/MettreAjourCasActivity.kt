@@ -1,5 +1,6 @@
 package com.example.sps
 
+import android.app.ActionBar
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -21,13 +22,12 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
     lateinit var wilaya: String
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mettreajourcas)
 
 
-
+supportActionBar?.title="Ajout cas"
         val currentTime = Calendar.getInstance().time
         val date = formate.format(currentTime.time)
         textdate.text=date
@@ -157,5 +157,9 @@ class MettreAjourCasActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
 //            this, "Selected Radio Button: " + radioButton?.text,
 //            Toast.LENGTH_SHORT
 //        ).show()
+    }
+
+    override fun getActionBar(): ActionBar? {
+        return super.getActionBar()
     }
 }
