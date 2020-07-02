@@ -14,6 +14,7 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import kotlinx.android.synthetic.main.activity_bulletin.*
 import kotlinx.android.synthetic.main.activity_guerisonmort.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -59,14 +60,23 @@ class BulletinActivity : AppCompatActivity() {
 
                 bardataset.color=Color.parseColor("#5AC7AA")
         databar.addDataSet(bardataset)
-        val xAxis: XAxis = combinedchart.getXAxis();
-        xAxis.isEnabled= false
+        val xAxis: XAxis = combinedchart.xAxis
+        xAxis.isEnabled= true
         val yaxisl :YAxis= combinedchart.axisLeft
-        yaxisl.isEnabled= false
         val yaxisr :YAxis= combinedchart.axisRight
         yaxisr.isEnabled= false
         yaxisl.isEnabled= false
 
+        var days = ArrayList<String>()
+        days.add("0")
+        days.add("Jour 1")
+        days.add("Jour 2")
+        days.add("Jour 3")
+        days.add("Jour 4")
+        days.add("Jour 5")
+        days.add("Jour 7")
+        days.add("Jour 8")
+        combinedchart.xAxis.valueFormatter= IndexAxisValueFormatter(days)
         ////////////SetData//////////////////////
         combinedchart.description.isEnabled = false
         var data: CombinedData = CombinedData()
@@ -75,7 +85,31 @@ class BulletinActivity : AppCompatActivity() {
         data.barData.barWidth=0.5f
         data.setValueTextColor(Color.BLACK)
        // xAxis.setAxisMaximum(data.getXMax() + 0.5f);
-        xAxis.labelCount=4
+        guerison.setOnClickListener {
+            var lineentries = ArrayList<Entry>()
+            lineentries= lineentries2(lineentries)
+            var dataline = LineData()
+            var linedataset = LineDataSet(lineentries,"Total Guerison")
+            linedataset=linedataset2(linedataset)
+            linedataset.color=Color.GREEN
+            dataline.addDataSet(linedataset)
+            data.setData(dataline)
+            combinedchart.data= data
+            combinedchart.invalidate()
+        }
+
+        mort.setOnClickListener {
+            var lineentries = ArrayList<Entry>()
+            lineentries= lineentries(lineentries)
+            var dataline = LineData()
+            var linedataset = LineDataSet(lineentries,"Total Décédés")
+            linedataset=linedataset(linedataset)
+            linedataset.color=Color.RED
+            dataline.addDataSet(linedataset)
+            data.setData(dataline)
+            combinedchart.data= data
+            combinedchart.invalidate()
+        }
         combinedchart.data= data
         combinedchart.invalidate()
 
@@ -294,7 +328,51 @@ class BulletinActivity : AppCompatActivity() {
         return barEntries
     }
 
+    fun lineentries2(barEntries: ArrayList<Entry>):ArrayList<Entry>{
+        var day1= 0
+        var day2= 0
+        var day3= 0
+        var day4= 0
+        var day5= 0
+        var day6= 0
+        var day7= 0
+        val  list = db.readCas()
+        var formate = SimpleDateFormat("dd MMM, yyyy", Locale.FRENCH)
+        for (cas in list){
+            if (cas.type==2){
+                val currentTime = Calendar.getInstance().time
+                val datedork = formate.format(currentTime.time)
+                val datedork1= formate.parse(datedork)
+                val date= formate.parse(cas.date)
+                val betweendays = datedork1.time - date.time
+                val nbdays =TimeUnit.DAYS.convert(betweendays, TimeUnit.MILLISECONDS)
+                when(nbdays){
+                    0L-> day1 += cas.caracteristique2.toInt()
+                    1L-> day2+= cas.caracteristique2.toInt()
+                    2L-> day3+= cas.caracteristique2.toInt()
+                    3L-> day4+= cas.caracteristique2.toInt()
+                    4L-> day5+= cas.caracteristique2.toInt()
+                    5L-> day6+= cas.caracteristique2.toInt()
+                    6L-> day7+= cas.caracteristique2.toInt()
+                    else->{
 
+                    }
+                }
+            }
+        }
+
+        barEntries.add(Entry(1f,day7.toFloat()))
+        barEntries.add(Entry(2f,day6.toFloat()))
+        barEntries.add(Entry(3f,day5.toFloat()))
+        barEntries.add(Entry(4f,day4.toFloat()))
+        barEntries.add(Entry(5f,day3.toFloat()))
+        barEntries.add(Entry(6f,day2.toFloat()))
+        barEntries.add(Entry(7f,day1.toFloat()))
+
+
+
+        return barEntries
+    }
     fun  linedataset (set: LineDataSet): LineDataSet {
         set.setColor(Color.rgb(240, 238, 70));
         set.setColors(Color.YELLOW);
@@ -310,6 +388,23 @@ class BulletinActivity : AppCompatActivity() {
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         return  set
     }
+
+    fun  linedataset2 (set: LineDataSet): LineDataSet {
+        set.setColor(Color.rgb(0, 255, 0));
+        set.setColors(Color.GREEN);
+        set.setLineWidth(2.5f);
+        set.setCircleColor(Color.GREEN);
+        set.setCircleRadius(5f);
+        set.setFillColor(Color.GREEN);
+        set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        set.setDrawValues(true);
+        set.setValueTextSize(10f);
+        // set.setValueTextColor(Color.rgb(240, 238, 70));
+
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        return  set
+    }
+
     fun  baredataset (set: BarDataSet): BarDataSet {
         set.setColor(Color.rgb(60, 220, 78));
         set.setColors(Color.RED)
